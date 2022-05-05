@@ -7,6 +7,7 @@ namespace TPI_BattleBorn
     public class Main : Game
     {
         private GraphicsDeviceManager _graphics;
+        public Game game;
 
         public Main()
         {
