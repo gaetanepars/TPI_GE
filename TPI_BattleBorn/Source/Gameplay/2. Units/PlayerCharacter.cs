@@ -6,5 +6,6 @@ namespace TPI_BattleBorn
 {
     public class PlayerCharacter
     {
+
     }
 }

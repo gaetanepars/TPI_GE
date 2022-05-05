@@ -4,8 +4,7 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class Potion
+    class Gameplay
     {
-        
     }
 }

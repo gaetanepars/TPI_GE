@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gaeta\\Desktop\\TPI\\ProjectFolder\\TPI_BattleBorn\\TPI_BattleBorn.csproj": {}
+    "C:\\Users\\gaeta\\Desktop\\TPI_GE\\TPI_BattleBorn\\TPI_BattleBorn.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gaeta\\Desktop\\TPI\\ProjectFolder\\TPI_BattleBorn\\TPI_BattleBorn.csproj": {
+    "C:\\Users\\gaeta\\Desktop\\TPI_GE\\TPI_BattleBorn\\TPI_BattleBorn.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gaeta\\Desktop\\TPI\\ProjectFolder\\TPI_BattleBorn\\TPI_BattleBorn.csproj",
+        "projectUniqueName": "C:\\Users\\gaeta\\Desktop\\TPI_GE\\TPI_BattleBorn\\TPI_BattleBorn.csproj",
         "projectName": "TPI_BattleBorn",
-        "projectPath": "C:\\Users\\gaeta\\Desktop\\TPI\\ProjectFolder\\TPI_BattleBorn\\TPI_BattleBorn.csproj",
+        "projectPath": "C:\\Users\\gaeta\\Desktop\\TPI_GE\\TPI_BattleBorn\\TPI_BattleBorn.csproj",
         "packagesPath": "C:\\Users\\gaeta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gaeta\\Desktop\\TPI\\ProjectFolder\\TPI_BattleBorn\\obj\\",
+        "outputPath": "C:\\Users\\gaeta\\Desktop\\TPI_GE\\TPI_BattleBorn\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gaeta\\AppData\\Roaming\\NuGet\\NuGet.Config",
