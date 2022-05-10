@@ -4,12 +4,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace TPI_BattleBorn
 {
-    public class Main : Game
+    public class Game : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager _graphics;
-        public Game game;
 
-        public Main()
+        public int Yopla;
+
+        public Game()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -26,6 +27,9 @@ namespace TPI_BattleBorn
             _graphics.ApplyChanges();
 
             IsMouseVisible = false;
+
+            LevelComponent level = new LevelComponent(this);
+            Components.Add(level);
 
             base.Initialize();
         }
@@ -59,7 +63,7 @@ namespace TPI_BattleBorn
         {
             static void Main()
             {
-                using (var game = new Main())
+                using (var game = new Game())
                     game.Run();
             }
         }

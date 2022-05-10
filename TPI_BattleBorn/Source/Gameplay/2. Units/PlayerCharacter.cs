@@ -64,6 +64,11 @@ namespace TPI_BattleBorn
             }
         }
 
+        public void Draw()
+        {
+
+        }
+
         public void PlayerCollision()
         {
 

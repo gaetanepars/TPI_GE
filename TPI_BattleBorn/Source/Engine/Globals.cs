@@ -19,5 +19,11 @@ namespace TPI_BattleBorn
 
         public static int screenWidth;
         public static int screenHeight;
+        
+        public static int bonusHP;
+        public static int bonusMana;
+        public static int bonusSpeed;
+
+        public static bool paused;
     }
 }
