@@ -23,7 +23,7 @@ namespace TPI_BattleBorn
         public AnimationComponent idleAnimation;
         public AnimationComponent runningAnimation;
         public AnimationComponent deathAnimation;
-        public EnemyComponent(Microsoft.Xna.Framework.Game game) : base(game)
+        public EnemyComponent(Game game) : base(game)
         {
         }
 
@@ -39,6 +39,7 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
+            
             AI();
             base.Update(gameTime);
         }
