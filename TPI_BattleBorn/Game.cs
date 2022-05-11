@@ -1,14 +1,18 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.IO;
 
 namespace TPI_BattleBorn
 {
     public class Game : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager _graphics;
+        private const int numberOfLevels = 3;
 
-        public int Yopla;
+        public LevelComponent level;
+        public PlayerComponent player;
+
 
         public Game()
         {
@@ -28,8 +32,13 @@ namespace TPI_BattleBorn
 
             IsMouseVisible = false;
 
-            LevelComponent level = new LevelComponent(this);
+            LoadNext();
+
             Components.Add(level);
+
+            player = new PlayerComponent(this,"Player",new Vector2(level.startingPoint.X, level.startingPoint.Y),new Vector2(50,50));
+            Components.Add(player);
+            
 
             base.Initialize();
         }
@@ -57,6 +66,30 @@ namespace TPI_BattleBorn
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void LoadNext()
+        {
+            Globals.levelIndex = (Globals.levelIndex + 1) % numberOfLevels;
+
+            if (level == null)
+            {
+                string levelPath = string.Format("Content/{0}.txt", Globals.levelIndex);
+                using (Stream fileStream = TitleContainer.OpenStream(levelPath))
+                {
+                    level = new LevelComponent(this, Services, fileStream, Globals.levelIndex);
+                }
+
+            }
+            else
+            {
+                level.Dispose();
+                string levelPath = string.Format("Content/{0}.txt", Globals.levelIndex);
+                using (Stream fileStream = TitleContainer.OpenStream(levelPath))
+                {
+                    level = new LevelComponent(this, Services, fileStream, Globals.levelIndex);
+                }
+            }
         }
 
         public static class Program

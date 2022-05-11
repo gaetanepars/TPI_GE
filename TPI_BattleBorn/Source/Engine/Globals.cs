@@ -25,5 +25,7 @@ namespace TPI_BattleBorn
         public static int bonusSpeed;
 
         public static bool paused;
+
+        public static int levelIndex=-1;
     }
 }

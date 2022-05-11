@@ -9,39 +9,20 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
+    //Level component, basically the environnement where the game happens
     public class LevelComponent : DrawableGameComponent
     {
-        private Game game;
-
         private Tile[,] tiles;
 
-        private Vector2 startingPoint;
+        public Vector2 startingPoint;
 
         private Texture2D background;
-
-        private PlayerCharacter player;
-
-        private bool leveledUp;
-
-        private int playerExperience;
-        private int playerLevel;
-        private int levelIndex;
 
         public HUD hud;
 
         private List<Enemy> enemies = new List<Enemy>();
-        private List<Projectile> projectiles = new List<Projectile>();
+        private List<ProjectileComponent> projectiles = new List<ProjectileComponent>();
         private List<Spawner> spawners = new List<Spawner>();
-
-        //PassObject resetLevel;
-        //PassObject stateChange;
-
-        Stream fileStream;
-
-        public PlayerCharacter Player
-        {
-            get { return player; }
-        }
 
         private bool hasWon;
         public bool HasWon
@@ -59,91 +40,26 @@ namespace TPI_BattleBorn
             get { return tiles.GetLength(1); }
         }
 
-        public LevelComponent(Game game) : base(game)
+        public LevelComponent(Game game, IServiceProvider services, Stream fileStream, int levelIndex) : base(game)
         {
-            this.game = game;
-
+            LoadAllTiles(fileStream);
         }
 
         public override void Initialize()
         {
-            LoadAllTiles(fileStream);
-            levelIndex = 0;
             base.Initialize();
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            background = Globals.content.Load<Texture2D>("Background" + levelIndex);
-            player.Draw();
+            background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
             DrawAllTiles(spriteBatch);
-
-            for(int i=0; i < projectiles.Count; i++)
-            {
-                //projectiles[i].Draw();
-            }
-
-            for(int i=0; i < enemies.Count; i++)
-            {
-                //enemies[i].Draw();
-            }
-
-            //hud.Draw(this);
 
             base.Draw(gameTime);
         }
 
         public override void Update(GameTime gameTime)
         {
-            if (!player.dead && !Globals.paused)
-            {
-                player.Update();
-
-                if (playerExperience == 10)
-                {
-                    
-                }
-                if (leveledUp == true)
-                {
-
-                }
-
-                for(int i = 0; i < spawners.Count; i++)
-                {
-                    //spawners[i].Update();
-
-                    //if (spawners[i].dead)
-                    {
-                        spawners.RemoveAt(i);
-                        i--;
-                    }
-                }
-
-                for (int i = 0; i < enemies.Count; i++)
-                {
-                    //enemies[i].Update();
-
-                    //if (enemies[i].dead)
-                    {
-                        spawners.RemoveAt(i);
-                        i--;
-                    }
-                }
-
-                for (int i = 0; i < projectiles.Count; i++)
-                {
-                    //projectiles[i].Update(enemies.ToList<Enemy>(),spawners.ToList<Spawner>());
-
-                    //if (projectiles[i].destroyed)
-                    {
-                        projectiles.RemoveAt(i);
-                        i--;
-                    }
-                }
-
-                //hud.Update(this);
-            }
-
             base.Update(gameTime);
         }
 
@@ -154,7 +70,7 @@ namespace TPI_BattleBorn
 
         public void AddProjectile(object INFO)
         {
-            projectiles.Add((Projectile)INFO);
+            projectiles.Add((ProjectileComponent)INFO);
         }
 
         public void AddSpawner(object INFO)
@@ -170,6 +86,10 @@ namespace TPI_BattleBorn
                     return new Tile(null, TileStatus.Passthrough);
                 case 'S':
                     return StartTile(x, y);
+                case 'X':
+                    return EnemyTile(x, y, "Enemy1");
+                case 'Y':
+                    return EnemyTile(x, y, "Enemy2");
                 case '*':
                     return EnemyTile(x, y, "Spawner1");
                 case '"':
@@ -189,15 +109,23 @@ namespace TPI_BattleBorn
         private Tile StartTile(int x, int y)
         {
             startingPoint = new Vector2(x,y);
-            //player = new PlayerCharacter();
+            
             return new Tile(null, TileStatus.Passthrough);
         }
 
         private Tile EnemyTile(int x, int y, string spriteSet)
         {
-            Vector2 position = new Vector2(x,y);
-            //enemies.Add(new Enemy();
+            Vector2 position = new Vector2(x, y);
 
+            //Game.Components.Add(());
+            return new Tile(null, TileStatus.Passthrough);
+        }
+
+        private Tile SpawnerTile(int x, int y, string spriteSet)
+        {
+            Vector2 position = new Vector2(x, y);
+
+            //Game.Components.Add(());
             return new Tile(null, TileStatus.Passthrough);
         }
 
