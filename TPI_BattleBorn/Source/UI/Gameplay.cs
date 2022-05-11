@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class BonusMenu
+    public class Gameplay
     {
     }
 }

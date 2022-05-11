@@ -18,11 +18,11 @@ namespace TPI_BattleBorn
 
         private Texture2D background;
 
-        public HUD hud;
+        public HUDComponent hud;
 
-        private List<Enemy> enemies = new List<Enemy>();
+        private List<EnemyComponent> enemies = new List<EnemyComponent>();
         private List<ProjectileComponent> projectiles = new List<ProjectileComponent>();
-        private List<Spawner> spawners = new List<Spawner>();
+        private List<SpawnerComponent> spawners = new List<SpawnerComponent>();
 
         private bool hasWon;
         public bool HasWon
@@ -50,10 +50,10 @@ namespace TPI_BattleBorn
             base.Initialize();
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime)
         {
             background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
-            DrawAllTiles(spriteBatch);
+            DrawAllTiles(Globals.spriteBatch);
 
             base.Draw(gameTime);
         }
@@ -65,7 +65,7 @@ namespace TPI_BattleBorn
 
         public void AddEnemy(object INFO)
         {
-            enemies.Add((Enemy)INFO);
+            enemies.Add((EnemyComponent)INFO);
         }
 
         public void AddProjectile(object INFO)
@@ -75,7 +75,7 @@ namespace TPI_BattleBorn
 
         public void AddSpawner(object INFO)
         {
-            spawners.Add((Spawner)INFO);
+            spawners.Add((SpawnerComponent)INFO);
         }
 
         private Tile TileConversion(char tileType, int x, int y)

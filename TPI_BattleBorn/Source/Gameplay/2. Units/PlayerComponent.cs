@@ -31,6 +31,7 @@ namespace TPI_BattleBorn
 
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
+            dead = false;
             health = 5;
             maxHealth = health;
             speed = 2;
