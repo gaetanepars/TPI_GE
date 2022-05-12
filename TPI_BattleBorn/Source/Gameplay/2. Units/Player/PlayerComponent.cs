@@ -14,6 +14,8 @@ namespace TPI_BattleBorn
         public int health;
         public int speed;
 
+        public int potions;
+
         public Vector2 position;
         public Vector2 dimensions;
         public float rotation;
@@ -35,12 +37,14 @@ namespace TPI_BattleBorn
             health = 5;
             maxHealth = health;
             speed = 2;
+            potions = 2;
             ResetPlayer(Position);
         }
 
         public void ResetPlayer(Vector2 Position)
         {
             Position = position;
+            potions = 2;
             health = 5;
             speed = 2;
             dead = false;
@@ -85,6 +89,15 @@ namespace TPI_BattleBorn
             {
 
             }
+
+            if (Globals.keyboard.IsKeyDown(Keys.Q))
+            {
+                if (potions != 0)
+                {
+                    health += health;
+                }
+                
+            }
         }
 
         public override void Draw(GameTime gameTime)
@@ -95,6 +108,15 @@ namespace TPI_BattleBorn
         public void PlayerCollision()
         {
 
+        }
+
+        public void GetHit(int damage)
+        {
+            health -= damage;
+            if (health <= 0)
+            {
+                dead = true;
+            }
         }
 
         public void Death()

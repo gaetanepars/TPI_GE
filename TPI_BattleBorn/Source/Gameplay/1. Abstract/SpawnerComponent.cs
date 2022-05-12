@@ -7,8 +7,18 @@ namespace TPI_BattleBorn
 {
     public class SpawnerComponent : DrawableGameComponent
     {
-        public SpawnerComponent(Microsoft.Xna.Framework.Game game) : base(game)
+        public bool dead;
+        public int health;
+        public float hitRange;
+        
+        public CooldownTimer spawnTimer;
+        public SpawnerComponent(Game game) : base(game)
         {
+            dead = false;
+            health = 3;
+            hitRange = 20.0f;
+
+            //spawnTimer=new CooldownTimer(1000);
         }
 
         public override void Draw(GameTime gameTime)
@@ -23,12 +33,28 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
+            //updates the timer and if the cd is up => SpawnEnemies();
             base.Update(gameTime);
         }
 
         protected override void LoadContent()
         {
+
             base.LoadContent();
+        }
+
+        public virtual void SpawnEnemies()
+        {
+
+        }
+
+        public virtual void GetHit(int damage)
+        {
+            health -= damage;
+            if (health <= 0)
+            {
+                dead = true;
+            }
         }
     }
 }
