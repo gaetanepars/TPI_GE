@@ -10,6 +10,8 @@ namespace TPI_BattleBorn
         private GraphicsDeviceManager _graphics;
         private const int numberOfLevels = 3;
 
+        public static Game game;
+
         public LevelComponent level;
         public PlayerComponent player;
 
@@ -26,6 +28,8 @@ namespace TPI_BattleBorn
             Globals.screenWidth = 1600;
             Globals.screenHeight = 900;
 
+            game = this;
+
             _graphics.PreferredBackBufferWidth = Globals.screenWidth;
             _graphics.PreferredBackBufferHeight = Globals.screenHeight;
             _graphics.ApplyChanges();
@@ -35,11 +39,9 @@ namespace TPI_BattleBorn
             LoadNext();
 
             Components.Add(level);
-
             player = new PlayerComponent(this,"Player",new Vector2(level.startingPoint.X, level.startingPoint.Y),new Vector2(50,50));
             Components.Add(player);
             
-
             base.Initialize();
         }
 

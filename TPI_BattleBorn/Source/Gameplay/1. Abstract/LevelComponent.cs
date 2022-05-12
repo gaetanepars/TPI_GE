@@ -53,8 +53,9 @@ namespace TPI_BattleBorn
         public override void Draw(GameTime gameTime)
         {
             background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
+            Globals.spriteBatch.Draw(background, new Vector2(Globals.screenWidth, Globals.screenHeight), Color.White);
             DrawAllTiles(Globals.spriteBatch);
-
+            
             base.Draw(gameTime);
         }
 

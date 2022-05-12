@@ -11,6 +11,7 @@ namespace TPI_BattleBorn
         public bool dead;
         public int health;
         public int speed;
+        public int attackDamage;
 
         public Vector2 position;
         public Vector2 dimensions;
@@ -39,7 +40,6 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
-            
             AI();
             base.Update(gameTime);
         }
@@ -51,7 +51,14 @@ namespace TPI_BattleBorn
 
         public virtual void AI()
         {
-           
+            position += Globals.RadialMovement(TPI_BattleBorn.Game.game.player.position, position, speed);
+            rotation = Globals.RotateTo(position, TPI_BattleBorn.Game.game.player.position);
+
+            if (Globals.GetDistance(position, TPI_BattleBorn.Game.game.player.position) < 15)
+            {
+                TPI_BattleBorn.Game.game.player.GetHit(attackDamage);
+                dead = true;
+            }
         }
 
     }

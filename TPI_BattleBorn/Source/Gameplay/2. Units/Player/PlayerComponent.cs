@@ -12,7 +12,10 @@ namespace TPI_BattleBorn
         public bool dead;
         public int maxHealth;
         public int health;
+        public int maxMana;
+        public int mana;
         public int speed;
+        public float hitRange;
 
         public int potions;
 
@@ -28,14 +31,16 @@ namespace TPI_BattleBorn
         public AnimationComponent runningAnimation;
         public AnimationComponent deathAnimation;
 
-        CooldownTimer attackTimer = new CooldownTimer();
-        CooldownTimer spellTimer = new CooldownTimer();
+        CooldownTimer attackTimer = new CooldownTimer(1000);
+        CooldownTimer spellTimer = new CooldownTimer(5000);
 
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
             dead = false;
             health = 5;
             maxHealth = health;
+            mana = 5;
+            maxMana = mana;
             speed = 2;
             potions = 2;
             ResetPlayer(Position);
@@ -82,22 +87,35 @@ namespace TPI_BattleBorn
 
             if (Globals.mouse.LeftButton == ButtonState.Pressed)
             {
-
+                if (attackTimer.Test()==true)
+                {
+                    attackTimer.ResetTime();
+                }
             }
 
             if (Globals.mouse.RightButton == ButtonState.Pressed)
             {
-
+                if (spellTimer.Test() == true || mana!=0)
+                {
+                    mana--;
+                    spellTimer.ResetTime();
+                }
             }
 
             if (Globals.keyboard.IsKeyDown(Keys.Q))
             {
                 if (potions != 0)
                 {
-                    health += health;
+                    health =maxHealth;
                 }
                 
             }
+
+            rotation = Globals.RotateTo(position, new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y));
+
+            attackTimer.Update();
+
+            spellTimer.Update();
         }
 
         public override void Draw(GameTime gameTime)

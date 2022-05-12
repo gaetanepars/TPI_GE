@@ -7,7 +7,7 @@ namespace TPI_BattleBorn
 {
     public class Enemy1 : EnemyComponent
     {
-        public Enemy1(Microsoft.Xna.Framework.Game game) : base(game)
+        public Enemy1(Game game) : base(game)
         {
         }
 
