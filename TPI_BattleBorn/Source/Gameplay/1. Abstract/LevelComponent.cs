@@ -50,12 +50,16 @@ namespace TPI_BattleBorn
             base.Initialize();
         }
 
-        public override void Draw(GameTime gameTime)
+        protected override void LoadContent()
         {
             background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
+            base.LoadContent();
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
             Globals.spriteBatch.Draw(background, new Vector2(Globals.screenWidth, Globals.screenHeight), Color.White);
             DrawAllTiles(Globals.spriteBatch);
-            
             base.Draw(gameTime);
         }
 
@@ -118,7 +122,7 @@ namespace TPI_BattleBorn
         {
             Vector2 position = new Vector2(x, y);
 
-            //Game.Components.Add(());
+            Game.Components.Add(new EnemyComponent(TPI_BattleBorn.Game.game, spriteSet ,position,new Vector2(60,60)));
             return new Tile(null, TileStatus.Passthrough);
         }
 
@@ -126,7 +130,7 @@ namespace TPI_BattleBorn
         {
             Vector2 position = new Vector2(x, y);
 
-            //Game.Components.Add(());
+            //Game.Components.Add(new SpawnerComponent(TPI_BattleBorn.Game.game, spriteSet, position, new Vector2(60, 60)));
             return new Tile(null, TileStatus.Passthrough);
         }
 
@@ -179,6 +183,16 @@ namespace TPI_BattleBorn
                     }
                 }
             }
+        }
+
+        public TileStatus GetCollision(int x, int y)
+        {
+            if (x >= Width || x < 0 || y >= Height || y > 0 )
+            {
+                return TileStatus.Solid;
+            }
+
+            return tiles[x, y].status;
         }
 
     }

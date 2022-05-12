@@ -12,6 +12,7 @@ namespace TPI_BattleBorn
         public int health;
         public int speed;
         public int attackDamage;
+        public float hitRange;
 
         public Vector2 position;
         public Vector2 dimensions;
@@ -24,13 +25,12 @@ namespace TPI_BattleBorn
         public AnimationComponent idleAnimation;
         public AnimationComponent runningAnimation;
         public AnimationComponent deathAnimation;
-        public EnemyComponent(Game game) : base(game)
+        public EnemyComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
-        }
-
-        public override void Draw(GameTime gameTime)
-        {
-            base.Draw(gameTime);
+            position = Position;
+            dimensions = Dimensions;
+            dead = false;
+            textureToDraw= Globals.content.Load<Texture2D>(Path);
         }
 
         public override void Initialize()
@@ -38,17 +38,25 @@ namespace TPI_BattleBorn
             base.Initialize();
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            AI();
-            base.Update(gameTime);
-        }
-
         protected override void LoadContent()
         {
             base.LoadContent();
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            AI();
+            if (dead == true)
+            {
+                TPI_BattleBorn.Game.game.Components.Remove(this);
+            }
+            base.Update(gameTime);
+        }
+
+        public override void Draw(GameTime gameTime)
+        {
+            base.Draw(gameTime);
+        }
         public virtual void AI()
         {
             position += Globals.RadialMovement(TPI_BattleBorn.Game.game.player.position, position, speed);
@@ -57,6 +65,15 @@ namespace TPI_BattleBorn
             if (Globals.GetDistance(position, TPI_BattleBorn.Game.game.player.position) < 15)
             {
                 TPI_BattleBorn.Game.game.player.GetHit(attackDamage);
+                dead = true;
+            }
+        }
+
+        public void GetHit(int damage)
+        {
+            health -= damage;
+            if (health <= 0)
+            {
                 dead = true;
             }
         }

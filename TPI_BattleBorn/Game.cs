@@ -25,8 +25,8 @@ namespace TPI_BattleBorn
 
         protected override void Initialize()
         {
-            Globals.screenWidth = 1600;
-            Globals.screenHeight = 900;
+            Globals.screenWidth = 1280;
+            Globals.screenHeight = 720;
 
             game = this;
 

@@ -31,11 +31,18 @@ namespace TPI_BattleBorn
         public AnimationComponent runningAnimation;
         public AnimationComponent deathAnimation;
 
+        public AnimationManager sprite;
+
+        public Rectangle localBounds;
+
         CooldownTimer attackTimer = new CooldownTimer(1000);
         CooldownTimer spellTimer = new CooldownTimer(5000);
 
+
+
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
+            path = Path;
             dead = false;
             health = 5;
             maxHealth = health;
@@ -46,9 +53,19 @@ namespace TPI_BattleBorn
             ResetPlayer(Position);
         }
 
+        public Rectangle BoundingRectangle
+        {
+            get
+            {
+                int left = (int)Math.Round(position.X) + localBounds.X;
+                int top = (int)Math.Round(position.Y) + localBounds.Y;
+                return new Rectangle(left, top, localBounds.Width, localBounds.Height);
+            }
+        }
+
         public void ResetPlayer(Vector2 Position)
         {
-            Position = position;
+            position=Position;
             potions = 2;
             health = 5;
             speed = 2;
@@ -106,10 +123,17 @@ namespace TPI_BattleBorn
             {
                 if (potions != 0)
                 {
-                    health =maxHealth;
+                    health = maxHealth;
                 }
                 
             }
+
+            if (dead == true)
+            {
+                TPI_BattleBorn.Game.game.Components.Remove(this);
+            }
+
+            CollisionManagement();
 
             rotation = Globals.RotateTo(position, new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y));
 
@@ -123,10 +147,6 @@ namespace TPI_BattleBorn
             Globals.spriteBatch.Draw(textureToDraw, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y), null, Color.White, rotation, new Vector2(textureToDraw.Bounds.Width / 2, textureToDraw.Bounds.Height / 2), new SpriteEffects(), 0);
             base.Draw(gameTime);
         }
-        public void PlayerCollision()
-        {
-
-        }
 
         public void GetHit(int damage)
         {
@@ -137,11 +157,43 @@ namespace TPI_BattleBorn
             }
         }
 
-        public void Death()
+        private void CollisionManagement()
         {
+            Rectangle bounds = BoundingRectangle;
+            int leftTile = (int)Math.Floor((float)bounds.Right / Tile.tileWidth);
+            int rightTile = (int)Math.Ceiling(((float)bounds.Right / Tile.tileWidth)) - 1;
+            int topTile = (int)Math.Floor((float)bounds.Top / Tile.tileHeight);
+            int bottomTile = (int)Math.Ceiling(((float)bounds.Bottom / Tile.tileHeight)) - 1;
 
+            for (int y = topTile; y <= bottomTile; y++)
+            {
+                for (int x = leftTile; x <= rightTile; x++)
+                {
+                    TileStatus collision = TPI_BattleBorn.Game.game.level.GetCollision(x, y);
+                    if (collision != TileStatus.Passthrough)
+                    {
+                        Rectangle tileBounds = TPI_BattleBorn.Game.game.level.GetTileRectangle(x, y);
+                        Vector2 depth = RectangleExtension.GetIntersectionDepth(bounds, tileBounds);
+                        if (depth != Vector2.Zero)
+                        {
+                            float absDepthX = Math.Abs(depth.X);
+                            float absDepthY = Math.Abs(depth.Y);
+
+                            if (absDepthY < absDepthX && collision == TileStatus.Solid)
+                            {
+
+                                position = new Vector2(position.X, position.Y + depth.Y);
+                                bounds = BoundingRectangle;
+                            }
+                            else if (absDepthY>absDepthX && collision == TileStatus.Solid)
+                            {
+                                position = new Vector2(position.X + depth.X, position.Y);
+                                bounds = BoundingRectangle;
+                            }
+                        }
+                    }
+                }
+            }
         }
-
     }
-    
 }
