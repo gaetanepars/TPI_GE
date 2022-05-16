@@ -77,3 +77,7 @@ C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Bac
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\{0}.txt
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\0.txt
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Obstacle.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Background0.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Spawner1.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\fireball.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Enemy1.xnb

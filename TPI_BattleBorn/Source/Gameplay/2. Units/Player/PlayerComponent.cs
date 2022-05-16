@@ -38,10 +38,11 @@ namespace TPI_BattleBorn
         CooldownTimer attackTimer = new CooldownTimer(1000);
         CooldownTimer spellTimer = new CooldownTimer(5000);
 
-
-
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
+            position = Position;
+            DrawOrder = 4;
+            dimensions = Dimensions;
             path = Path;
             dead = false;
             health = 5;
@@ -50,9 +51,12 @@ namespace TPI_BattleBorn
             maxMana = mana;
             speed = 2;
             potions = 2;
-            ResetPlayer(Position);
+            ResetPlayer();
         }
 
+        /// <summary>
+        /// Player hitbox
+        /// </summary>
         public Rectangle BoundingRectangle
         {
             get
@@ -63,9 +67,8 @@ namespace TPI_BattleBorn
             }
         }
 
-        public void ResetPlayer(Vector2 Position)
+        public void ResetPlayer()
         {
-            position=Position;
             potions = 2;
             health = 5;
             speed = 2;
@@ -83,7 +86,11 @@ namespace TPI_BattleBorn
             base.LoadContent();
         }
 
-        public void Update()
+        /// <summary>
+        /// Handles movement inputs, attack inputs and calls CollisionManagement()
+        /// </summary>
+        /// <param name="gameTime"></param>
+        public override void Update(GameTime gameTime)
         {
             if (Globals.keyboard.IsKeyDown(Keys.W))
             {
@@ -106,6 +113,7 @@ namespace TPI_BattleBorn
             {
                 if (attackTimer.Test()==true)
                 {
+                    TPI_BattleBorn.Game.game.Components.Add(new Fireball(TPI_BattleBorn.Game.game, new Vector2(TPI_BattleBorn.Game.game.player.position.X, TPI_BattleBorn.Game.game.player.position.Y), TPI_BattleBorn.Game.game.player, new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y)));
                     attackTimer.ResetTime();
                 }
             }
@@ -140,11 +148,15 @@ namespace TPI_BattleBorn
             attackTimer.Update();
 
             spellTimer.Update();
+
+            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            Globals.spriteBatch.Begin();
             Globals.spriteBatch.Draw(textureToDraw, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y), null, Color.White, rotation, new Vector2(textureToDraw.Bounds.Width / 2, textureToDraw.Bounds.Height / 2), new SpriteEffects(), 0);
+            Globals.spriteBatch.End();
             base.Draw(gameTime);
         }
 
@@ -157,10 +169,13 @@ namespace TPI_BattleBorn
             }
         }
 
+        /// <summary>
+        /// Handles the collision between the player and the tiles
+        /// </summary>
         private void CollisionManagement()
         {
             Rectangle bounds = BoundingRectangle;
-            int leftTile = (int)Math.Floor((float)bounds.Right / Tile.tileWidth);
+            int leftTile = (int)Math.Floor((float)bounds.Left / Tile.tileWidth);
             int rightTile = (int)Math.Ceiling(((float)bounds.Right / Tile.tileWidth)) - 1;
             int topTile = (int)Math.Floor((float)bounds.Top / Tile.tileHeight);
             int bottomTile = (int)Math.Ceiling(((float)bounds.Bottom / Tile.tileHeight)) - 1;

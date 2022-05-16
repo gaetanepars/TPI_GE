@@ -18,6 +18,9 @@ namespace TPI_BattleBorn
         public Vector2 dimensions;
         public float rotation;
 
+        /// <summary>
+        /// Content path for the asset
+        /// </summary>
         public string path;
 
         //basic texture placeholder while waiting for animations
@@ -27,6 +30,7 @@ namespace TPI_BattleBorn
         public AnimationComponent deathAnimation;
         public EnemyComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
+            DrawOrder = 2;
             position = Position;
             dimensions = Dimensions;
             dead = false;
@@ -43,6 +47,10 @@ namespace TPI_BattleBorn
             base.LoadContent();
         }
 
+        /// <summary>
+        /// Calls the AI function and remove the component if it is dead
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             AI();
@@ -50,13 +58,21 @@ namespace TPI_BattleBorn
             {
                 TPI_BattleBorn.Game.game.Components.Remove(this);
             }
+
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
+            Globals.spriteBatch.Begin();
+            Globals.spriteBatch.Draw(textureToDraw, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y), null, Color.White, rotation, new Vector2(textureToDraw.Bounds.Width / 2, textureToDraw.Bounds.Height / 2), new SpriteEffects(), 0);
+            Globals.spriteBatch.End();
+
             base.Draw(gameTime);
         }
+        /// <summary>
+        /// Rotate the enemy in the direction of the player, normalizes its trajectory and handle collisions between the player and the enemies
+        /// </summary>
         public virtual void AI()
         {
             position += Globals.RadialMovement(TPI_BattleBorn.Game.game.player.position, position, speed);
@@ -69,6 +85,10 @@ namespace TPI_BattleBorn
             }
         }
 
+        /// <summary>
+        /// simple function to damage an enemy
+        /// </summary>
+        /// <param name="damage"></param>
         public void GetHit(int damage)
         {
             health -= damage;

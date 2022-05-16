@@ -15,6 +15,7 @@ namespace TPI_BattleBorn
         public LevelComponent level;
         public PlayerComponent player;
 
+        public Texture2D background;
 
         public Game()
         {
@@ -25,6 +26,8 @@ namespace TPI_BattleBorn
 
         protected override void Initialize()
         {
+            Globals.content = this.Content;
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.screenWidth = 1280;
             Globals.screenHeight = 720;
 
@@ -38,23 +41,22 @@ namespace TPI_BattleBorn
 
             LoadNext();
 
-            Components.Add(level);
-            player = new PlayerComponent(this,"Player",new Vector2(level.startingPoint.X, level.startingPoint.Y),new Vector2(50,50));
-            Components.Add(player);
+            
+            
             
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            Globals.content = Content;
-            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
+            background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
         }
 
         protected override void Update(GameTime gameTime)
         {
             Globals.mouse = Mouse.GetState();
             Globals.keyboard = Keyboard.GetState();
+            Globals.gameTime = gameTime;
 
             base.Update(gameTime);
         }
@@ -64,12 +66,15 @@ namespace TPI_BattleBorn
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-
+            Globals.spriteBatch.Draw(background, new Vector2(0,0), Color.White);
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);
         }
 
+        /// <summary>
+        /// Load the next level and add it to the components list (and the first)
+        /// </summary>
         private void LoadNext()
         {
             Globals.levelIndex = (Globals.levelIndex + 1) % numberOfLevels;
@@ -79,7 +84,8 @@ namespace TPI_BattleBorn
                 string levelPath = string.Format("Content/{0}.txt", Globals.levelIndex);
                 using (Stream fileStream = TitleContainer.OpenStream(levelPath))
                 {
-                    level = new LevelComponent(this, Services, fileStream, Globals.levelIndex);
+                    level = new LevelComponent(this, fileStream, Globals.levelIndex);
+                    Components.Add(level);
                 }
 
             }
@@ -89,7 +95,8 @@ namespace TPI_BattleBorn
                 string levelPath = string.Format("Content/{0}.txt", Globals.levelIndex);
                 using (Stream fileStream = TitleContainer.OpenStream(levelPath))
                 {
-                    level = new LevelComponent(this, Services, fileStream, Globals.levelIndex);
+                    level = new LevelComponent(this, fileStream, Globals.levelIndex);
+                    Components.Add(level);
                 }
             }
         }

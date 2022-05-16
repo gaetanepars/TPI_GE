@@ -1,5 +1,8 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/{0}.txt","C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\Content\bin\Windows\0.txt","CopyItem","File",187,187,0.0020399
-"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Background1.xnb","TextureProcessor","Texture2DContent",4371,3686485,0.1862824
-"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Obstacle.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Obstacle.xnb","TextureProcessor","Texture2DContent",205,14485,0.0040751
-"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Player.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Player.xnb","TextureProcessor","Texture2DContent",164,5205,0.0124253
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/{0}.txt","C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\Content\bin\Windows\0.txt","CopyItem","File",274,274,0.0026938
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background0.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Background0.xnb","TextureProcessor","Texture2DContent",4371,3686485,0.2208007
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Enemy1.xnb","TextureProcessor","Texture2DContent",203,14485,0.0030512
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/fireball.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/fireball.xnb","TextureProcessor","Texture2DContent",159,3685,0.0026034
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Obstacle.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Obstacle.xnb","TextureProcessor","Texture2DContent",205,14485,0.0027616
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Player.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Player.xnb","TextureProcessor","Texture2DContent",164,5205,0.0029323
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Spawner1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Spawner1.xnb","TextureProcessor","Texture2DContent",204,14485,0.002642

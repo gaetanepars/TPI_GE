@@ -16,13 +16,7 @@ namespace TPI_BattleBorn
 
         public Vector2 startingPoint;
 
-        private Texture2D background;
-
         public HUDComponent hud;
-
-        private List<EnemyComponent> enemies = new List<EnemyComponent>();
-        private List<ProjectileComponent> projectiles = new List<ProjectileComponent>();
-        private List<SpawnerComponent> spawners = new List<SpawnerComponent>();
 
         private bool hasWon;
         public bool HasWon
@@ -40,8 +34,9 @@ namespace TPI_BattleBorn
             get { return tiles.GetLength(1); }
         }
 
-        public LevelComponent(Game game, IServiceProvider services, Stream fileStream, int levelIndex) : base(game)
+        public LevelComponent(Game game, Stream fileStream, int levelIndex) : base(game)
         {
+            DrawOrder = 1;
             LoadAllTiles(fileStream);
         }
 
@@ -52,14 +47,15 @@ namespace TPI_BattleBorn
 
         protected override void LoadContent()
         {
-            background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
             base.LoadContent();
         }
 
         public override void Draw(GameTime gameTime)
         {
-            Globals.spriteBatch.Draw(background, new Vector2(Globals.screenWidth, Globals.screenHeight), Color.White);
+            Globals.spriteBatch.Begin();
             DrawAllTiles(Globals.spriteBatch);
+            Globals.spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
@@ -68,21 +64,13 @@ namespace TPI_BattleBorn
             base.Update(gameTime);
         }
 
-        public void AddEnemy(object INFO)
-        {
-            enemies.Add((EnemyComponent)INFO);
-        }
-
-        public void AddProjectile(object INFO)
-        {
-            projectiles.Add((ProjectileComponent)INFO);
-        }
-
-        public void AddSpawner(object INFO)
-        {
-            spawners.Add((SpawnerComponent)INFO);
-        }
-
+        /// <summary>
+        /// Calls the corresponding function for each type of tile depending on what is in the text file
+        /// </summary>
+        /// <param name="tileType"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         private Tile TileConversion(char tileType, int x, int y)
         {
             switch (tileType)
@@ -96,9 +84,9 @@ namespace TPI_BattleBorn
                 case 'Y':
                     return EnemyTile(x, y, "Enemy2");
                 case '*':
-                    return EnemyTile(x, y, "Spawner1");
+                    return SpawnerTile(x, y, "Spawner1");
                 case '"':
-                    return EnemyTile(x, y, "Spawner2");
+                    return SpawnerTile(x, y, "Spawner2");
                 case '#':
                     return LoadTile("Obstacle", TileStatus.Solid);
                 default:
@@ -106,39 +94,92 @@ namespace TPI_BattleBorn
             }
         }
 
+        /// <summary>
+        /// Load a specific tile
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
         private Tile LoadTile(string name, TileStatus status)
         {
             return new Tile(Globals.content.Load<Texture2D>(name), status);
         }
 
+        /// <summary>
+        /// Set the starting point of the player to the position of that null tile and add it to the components list
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         private Tile StartTile(int x, int y)
         {
-            startingPoint = new Vector2(x,y);
+            startingPoint = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+            TPI_BattleBorn.Game.game.player = new PlayerComponent(TPI_BattleBorn.Game.game, "Player", new Vector2(startingPoint.X,startingPoint.Y), new Vector2(50, 50));
+            TPI_BattleBorn.Game.game.Components.Add(TPI_BattleBorn.Game.game.player);
+
+            return new Tile(null, TileStatus.Passthrough);
+        }
+
+        /// <summary>
+        /// Set the initial position of an enemy to the position of the tile and adds the correct enemy to the components list
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="spriteSet"></param>
+        /// <returns></returns>
+        private Tile EnemyTile(int x, int y, string spriteSet)
+        {
+            Vector2 enemyPosition = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+
+            if (spriteSet == "Enemy1")
+            {
+                TPI_BattleBorn.Game.game.Components.Add(new Enemy1(TPI_BattleBorn.Game.game, new Vector2(enemyPosition.X,enemyPosition.Y)));
+            }
+            else if(spriteSet == "Enemy2")
+            {
+                TPI_BattleBorn.Game.game.Components.Add(new Enemy2(TPI_BattleBorn.Game.game, new Vector2(enemyPosition.X,enemyPosition.Y)));
+            }
+            return new Tile(null, TileStatus.Passthrough);
+        }
+
+        /// <summary>
+        /// Set the initial position of a spawner to the position of the tile and adds the correct spawner to the components list
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="spriteSet"></param>
+        /// <returns></returns>
+        private Tile SpawnerTile(int x, int y, string spriteSet)
+        {
+            Vector2 spawnerPosition = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+
+            if (spriteSet == "Spawner1")
+            {
+                TPI_BattleBorn.Game.game.Components.Add(new Spawner1(TPI_BattleBorn.Game.game,new Vector2(spawnerPosition.X, spawnerPosition.Y)));
+            }
+            else if (spriteSet == "Spawner2")
+            {
+                TPI_BattleBorn.Game.game.Components.Add(new Spawner2(TPI_BattleBorn.Game.game, new Vector2(spawnerPosition.X, spawnerPosition.Y)));
+            }
             
             return new Tile(null, TileStatus.Passthrough);
         }
-
-        private Tile EnemyTile(int x, int y, string spriteSet)
-        {
-            Vector2 position = new Vector2(x, y);
-
-            Game.Components.Add(new EnemyComponent(TPI_BattleBorn.Game.game, spriteSet ,position,new Vector2(60,60)));
-            return new Tile(null, TileStatus.Passthrough);
-        }
-
-        private Tile SpawnerTile(int x, int y, string spriteSet)
-        {
-            Vector2 position = new Vector2(x, y);
-
-            //Game.Components.Add(new SpawnerComponent(TPI_BattleBorn.Game.game, spriteSet, position, new Vector2(60, 60)));
-            return new Tile(null, TileStatus.Passthrough);
-        }
-
+   
+        /// <summary>
+        /// gives the position of the tile's rectangle
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public Rectangle GetTileRectangle(int x, int y)
         {
             return new Rectangle(x * Tile.tileWidth, y * Tile.tileHeight, Tile.tileWidth, Tile.tileHeight);
         }
 
+        /// <summary>
+        /// Read the lines of a text file to make the grid
+        /// </summary>
+        /// <param name="fileStream"></param>
         private void LoadAllTiles(Stream fileStream)
         {
             int width;
@@ -187,11 +228,6 @@ namespace TPI_BattleBorn
 
         public TileStatus GetCollision(int x, int y)
         {
-            if (x >= Width || x < 0 || y >= Height || y > 0 )
-            {
-                return TileStatus.Solid;
-            }
-
             return tiles[x, y].status;
         }
 
