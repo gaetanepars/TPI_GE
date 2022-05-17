@@ -30,6 +30,7 @@ namespace TPI_BattleBorn
         public AnimationComponent deathAnimation;
         public EnemyComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
+            hitRange = 20f;
             DrawOrder = 2;
             position = Position;
             dimensions = Dimensions;
@@ -53,11 +54,12 @@ namespace TPI_BattleBorn
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
-            AI();
+
             if (dead == true)
             {
                 TPI_BattleBorn.Game.game.Components.Remove(this);
             }
+            AI();
 
             base.Update(gameTime);
         }
