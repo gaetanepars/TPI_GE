@@ -14,6 +14,7 @@ namespace TPI_BattleBorn
 
         public LevelComponent level;
         public PlayerComponent player;
+        public HUDComponent hud;
 
         public Texture2D background;
 
@@ -40,15 +41,13 @@ namespace TPI_BattleBorn
             IsMouseVisible = false;
 
             LoadNext();
-
-            
-            
             
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            Globals.font = Globals.content.Load<SpriteFont>("Font");
             background = Globals.content.Load<Texture2D>("Background" + Globals.levelIndex);
         }
 
@@ -57,6 +56,11 @@ namespace TPI_BattleBorn
             Globals.mouse = Mouse.GetState();
             Globals.keyboard = Keyboard.GetState();
             Globals.gameTime = gameTime;
+
+            if (player.score == 100)
+            {
+                LoadNext();
+            }
 
             base.Update(gameTime);
         }
@@ -86,6 +90,8 @@ namespace TPI_BattleBorn
                 {
                     level = new LevelComponent(this, fileStream, Globals.levelIndex);
                     Components.Add(level);
+                    hud = new HUDComponent(game);
+                    Components.Add(hud);
                 }
 
             }
@@ -97,6 +103,8 @@ namespace TPI_BattleBorn
                 {
                     level = new LevelComponent(this, fileStream, Globals.levelIndex);
                     Components.Add(level);
+                    hud = new HUDComponent(game);
+                    Components.Add(hud);
                 }
             }
         }

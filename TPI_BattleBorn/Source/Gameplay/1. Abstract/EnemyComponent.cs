@@ -57,6 +57,8 @@ namespace TPI_BattleBorn
 
             if (dead == true)
             {
+                TPI_BattleBorn.Game.game.player.score++;
+                TPI_BattleBorn.Game.game.player.experience+=10;
                 TPI_BattleBorn.Game.game.Components.Remove(this);
             }
             AI();

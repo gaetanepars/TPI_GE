@@ -42,6 +42,8 @@ namespace TPI_BattleBorn
 
         public override void Initialize()
         {
+            TPI_BattleBorn.Game.game.hud = new HUDComponent(TPI_BattleBorn.Game.game);
+
             base.Initialize();
         }
 
@@ -114,6 +116,7 @@ namespace TPI_BattleBorn
         private Tile StartTile(int x, int y)
         {
             startingPoint = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+
             TPI_BattleBorn.Game.game.player = new PlayerComponent(TPI_BattleBorn.Game.game, "Player", new Vector2(startingPoint.X,startingPoint.Y), new Vector2(50, 50));
             TPI_BattleBorn.Game.game.Components.Add(TPI_BattleBorn.Game.game.player);
 

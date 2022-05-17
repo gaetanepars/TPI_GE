@@ -81,3 +81,8 @@ C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Bac
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Spawner1.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\fireball.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Enemy1.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Font.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\CurrentBar.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MaxBar.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\CurrentGauge.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MaxGauge.xnb

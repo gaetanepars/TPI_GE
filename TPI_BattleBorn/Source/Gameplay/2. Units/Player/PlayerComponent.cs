@@ -9,12 +9,18 @@ namespace TPI_BattleBorn
 {
     public class PlayerComponent : DrawableGameComponent
     {
+        public int playerLevel;
+        public int experience;
+        public int score;
+
         public bool dead;
+
         public int maxHealth;
         public int health;
         public int maxMana;
         public int mana;
         public int speed;
+
         public float hitRange;
 
         public int potions;
@@ -40,17 +46,25 @@ namespace TPI_BattleBorn
 
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
-            position = Position;
             DrawOrder = 4;
+
+            playerLevel = 0;
+            experience = 0;
+            score = 0;
+
+            position = Position;
             dimensions = Dimensions;
+
             path = Path;
             dead = false;
+
             health = 5;
             maxHealth = health;
             mana = 5;
             maxMana = mana;
             speed = 2;
             potions = 2;
+
             ResetPlayer();
         }
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TPI_BattleBorn.Source.Engine
+namespace TPI_BattleBorn
 {
     public class GaugeComponent : DrawableGameComponent
     {
@@ -76,6 +76,7 @@ namespace TPI_BattleBorn.Source.Engine
 
         public Bar(string Path, Vector2 Position, Vector2 Dimensions, Color BarColor)
         {
+            path = Path;
             position = Position;
             dimensions = Dimensions;
 

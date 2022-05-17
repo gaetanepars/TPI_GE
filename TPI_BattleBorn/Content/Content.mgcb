@@ -28,6 +28,18 @@
 /processorParam:TextureFormat=Color
 /build:Background0.png
 
+#begin CurrentBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:CurrentBar.png;CurrentGauge.png
+
 #begin Enemy1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -40,6 +52,13 @@
 /processorParam:TextureFormat=Color
 /build:Enemy1.png
 
+#begin File.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:File.spritefont;Font.spritefont
+
 #begin fireball.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -51,6 +70,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:fireball.png
+
+#begin MaxBar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:MaxBar.png;MaxGauge.png
 
 #begin Obstacle.png
 /importer:TextureImporter

@@ -14,6 +14,8 @@ namespace TPI_BattleBorn
         public static SpriteBatch spriteBatch;
         public static GameTime gameTime;
 
+        public static SpriteFont font;
+
         public static MouseState mouse;
         public static KeyboardState keyboard;
 
