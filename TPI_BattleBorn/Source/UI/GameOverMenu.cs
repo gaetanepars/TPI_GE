@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TPI_BattleBorn.Source.UI
+namespace TPI_BattleBorn
 {
     public class GameOverMenu : MenuComponent
     {

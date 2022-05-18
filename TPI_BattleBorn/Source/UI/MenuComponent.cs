@@ -12,6 +12,7 @@ namespace TPI_BattleBorn
         public Vector2 dimensions;
 
         public Texture2D menuScreen;
+
         public MenuComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
             position = Position;
