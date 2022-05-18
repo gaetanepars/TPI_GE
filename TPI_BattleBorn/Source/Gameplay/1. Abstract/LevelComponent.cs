@@ -18,12 +18,6 @@ namespace TPI_BattleBorn
 
         public HUDComponent hud;
 
-        private bool hasWon;
-        public bool HasWon
-        {
-            get { return hasWon; }
-        }
-
         public int Width
         {
             get { return tiles.GetLength(0); }

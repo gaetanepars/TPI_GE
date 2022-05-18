@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.IO;
 
 namespace TPI_BattleBorn
@@ -17,7 +18,11 @@ namespace TPI_BattleBorn
         public PlayerComponent player;
         public HUDComponent hud;
         public CursorComponent cursor;
-        public MainMenuComponent mainMenu;
+
+        public MainMenu mainMenu;
+        public GameOverMenu gameOverMenu;
+        public BonusMenu bonusMenu;
+        //public VictoryMenu victoryMenu;
 
         public Texture2D background;
 
@@ -68,20 +73,20 @@ namespace TPI_BattleBorn
             {
                 for (int i = 0; i < Components.Count; i++)
                 {
-                    if(!(Components[i] is MainMenuComponent))
+                    if(!(Components[i] is MainMenu))
                     {
                         ((DrawableGameComponent)Components[i]).Enabled = false;
                     }
                 }
-                mainMenu = new MainMenuComponent(game);
+                mainMenu = new MainMenu(game);
                 Components.Add(mainMenu);
             }
 
-            if (Globals.keyboard.IsKeyDown(Keys.Enter))
+            if (Globals.keyboard.IsKeyDown(Keys.Enter) || mainMenu.continueButton.buttonClicked == true)
             {
                 for (int i = 0; i < Components.Count; i++)
                 {
-                    if (!(Components[i] is MainMenuComponent))
+                    if (!(Components[i] is MainMenu))
                     {
                         ((DrawableGameComponent)Components[i]).Enabled = true;
                     }
@@ -106,6 +111,27 @@ namespace TPI_BattleBorn
             {
                 LoadGameOver();
             }
+
+            if(gameOverMenu.restartButton.buttonClicked==true|| mainMenu.restartButton.buttonClicked == true)
+            {
+                Globals.levelIndex = -1;
+                LoadNext();
+
+                gameOverMenu.Enabled = false;
+                gameOverMenu.Visible = false;
+
+                mainMenu.Enabled = false;
+                mainMenu.Visible = false;
+
+                Components.Remove(gameOverMenu);
+                Components.Remove(mainMenu);
+                
+            }
+
+            if(gameOverMenu.quitButton.buttonClicked==true || mainMenu.quitButton.buttonClicked == true)
+            {
+                Environment.Exit(0);
+            }
             
 
             base.Update(gameTime);
@@ -125,7 +151,7 @@ namespace TPI_BattleBorn
         /// <summary>
         /// Load the next level and add it to the components list (and the first)
         /// </summary>
-        private void LoadNext()
+        public void LoadNext()
         {
             Globals.levelIndex = (Globals.levelIndex + 1) % numberOfLevels;
 
@@ -140,7 +166,6 @@ namespace TPI_BattleBorn
                     hud = new HUDComponent(game);
                     Components.Add(hud);
                 }
-
             }
             else
             {
@@ -159,7 +184,8 @@ namespace TPI_BattleBorn
 
         public void LoadGameOver()
         {
-
+            gameOverMenu = new GameOverMenu(game);
+            Components.Add(gameOverMenu);
         }
 
         public void LoadVictory()

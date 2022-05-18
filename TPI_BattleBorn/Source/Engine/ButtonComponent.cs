@@ -14,8 +14,6 @@ namespace TPI_BattleBorn
 
         public Texture2D buttonTexture;
 
-        public string text;
-
         public bool buttonHovered;
         public bool buttonClicked;
 
@@ -52,7 +50,6 @@ namespace TPI_BattleBorn
         {
             Globals.spriteBatch.Begin();
             Globals.spriteBatch.Draw(buttonTexture, position, Color.White);
-            Globals.spriteBatch.DrawString(Globals.font, text, position, Color.Black);
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);
