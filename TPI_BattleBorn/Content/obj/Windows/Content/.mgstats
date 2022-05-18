@@ -2,6 +2,7 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/{0}.txt","C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\Content\bin\Windows\Content\0.txt","CopyItem","File",274,274,0.0017383
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background0.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Background0.xnb","TextureProcessor","Texture2DContent",4371,3686485,0.1987252
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/CurrentBar.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/CurrentGauge.xnb","TextureProcessor","Texture2DContent",206,16885,0.1149927
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Cursor.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Cursor.xnb","TextureProcessor","Texture2DContent",286,985,0.121171
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Enemy1.xnb","TextureProcessor","Texture2DContent",203,14485,0.1123103
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/File.spritefont","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.1901558
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/fireball.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/fireball.xnb","TextureProcessor","Texture2DContent",159,3685,0.130997

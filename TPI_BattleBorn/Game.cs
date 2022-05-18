@@ -15,6 +15,7 @@ namespace TPI_BattleBorn
         public LevelComponent level;
         public PlayerComponent player;
         public HUDComponent hud;
+        public CursorComponent cursor;
 
         public Texture2D background;
 
@@ -40,6 +41,9 @@ namespace TPI_BattleBorn
 
             IsMouseVisible = false;
 
+            cursor = new CursorComponent(game, "Cursor", new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y), new Vector2(15, 15));
+            Components.Add(cursor);
+
             LoadNext();
             
             base.Initialize();
@@ -56,11 +60,23 @@ namespace TPI_BattleBorn
             Globals.mouse = Mouse.GetState();
             Globals.keyboard = Keyboard.GetState();
             Globals.gameTime = gameTime;
+            cursor.position = new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y);
 
-            if (player.score == 100)
+            if (player != null && player.score==100 && Globals.levelIndex!=2)
             {
+                player.ResetPlayer();
                 LoadNext();
             }
+            else if(player!=null && player.score==100 && Globals.levelIndex==2)
+            {
+                LoadVictory();
+            }
+
+            else if (player == null)
+            {
+                LoadGameOver();
+            }
+            
 
             base.Update(gameTime);
         }
@@ -90,6 +106,7 @@ namespace TPI_BattleBorn
                 {
                     level = new LevelComponent(this, fileStream, Globals.levelIndex);
                     Components.Add(level);
+
                     hud = new HUDComponent(game);
                     Components.Add(hud);
                 }
@@ -103,10 +120,21 @@ namespace TPI_BattleBorn
                 {
                     level = new LevelComponent(this, fileStream, Globals.levelIndex);
                     Components.Add(level);
+
                     hud = new HUDComponent(game);
                     Components.Add(hud);
                 }
             }
+        }
+
+        public void LoadGameOver()
+        {
+
+        }
+
+        public void LoadVictory()
+        {
+
         }
 
         public static class Program

@@ -86,3 +86,4 @@ C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Cur
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MaxBar.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\CurrentGauge.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MaxGauge.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Cursor.xnb

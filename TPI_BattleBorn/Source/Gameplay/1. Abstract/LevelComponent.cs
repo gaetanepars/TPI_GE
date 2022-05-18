@@ -42,7 +42,6 @@ namespace TPI_BattleBorn
 
         public override void Initialize()
         {
-            TPI_BattleBorn.Game.game.hud = new HUDComponent(TPI_BattleBorn.Game.game);
 
             base.Initialize();
         }

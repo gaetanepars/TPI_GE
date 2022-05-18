@@ -11,6 +11,7 @@ namespace TPI_BattleBorn
         {
             health = 5;
             spawnTimer = new CooldownTimer(1000);
+            spawnCounter = 10;
         }
 
         public override void Initialize()

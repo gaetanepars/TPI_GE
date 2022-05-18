@@ -10,6 +10,7 @@ namespace TPI_BattleBorn
     {
         public Enemy1(Game game, Vector2 Position) : base(game,"Enemy1", Position, new Vector2(60,60))
         {
+            attackDamage = 1;
             health = 5;
             speed = 2;
         }

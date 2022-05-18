@@ -83,6 +83,8 @@ namespace TPI_BattleBorn
 
         public void ResetPlayer()
         {
+            score = 0;
+            playerLevel = 0;
             potions = 2;
             health = 5;
             speed = 2;
@@ -153,6 +155,8 @@ namespace TPI_BattleBorn
             if (dead == true)
             {
                 TPI_BattleBorn.Game.game.Components.Remove(this);
+                TPI_BattleBorn.Game.game.player = null;
+
             }
 
             CollisionManagement();

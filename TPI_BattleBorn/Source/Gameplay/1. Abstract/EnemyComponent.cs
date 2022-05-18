@@ -18,11 +18,6 @@ namespace TPI_BattleBorn
         public Vector2 dimensions;
         public float rotation;
 
-        /// <summary>
-        /// Content path for the asset
-        /// </summary>
-        public string path;
-
         //basic texture placeholder while waiting for animations
         public Texture2D textureToDraw;
         public AnimationComponent idleAnimation;
@@ -57,8 +52,11 @@ namespace TPI_BattleBorn
 
             if (dead == true)
             {
-                TPI_BattleBorn.Game.game.player.score++;
-                TPI_BattleBorn.Game.game.player.experience+=10;
+                if (TPI_BattleBorn.Game.game.player != null)
+                {
+                    TPI_BattleBorn.Game.game.player.score++;
+                    TPI_BattleBorn.Game.game.player.experience += 10;
+                }
                 TPI_BattleBorn.Game.game.Components.Remove(this);
             }
             AI();
@@ -79,14 +77,18 @@ namespace TPI_BattleBorn
         /// </summary>
         public virtual void AI()
         {
-            position += Globals.RadialMovement(TPI_BattleBorn.Game.game.player.position, position, speed);
-            rotation = Globals.RotateTo(position, TPI_BattleBorn.Game.game.player.position);
-
-            if (Globals.GetDistance(position, TPI_BattleBorn.Game.game.player.position) < 15)
+            if (TPI_BattleBorn.Game.game.player != null)
             {
-                TPI_BattleBorn.Game.game.player.GetHit(attackDamage);
-                dead = true;
+                position += Globals.RadialMovement(TPI_BattleBorn.Game.game.player.position, position, speed);
+                rotation = Globals.RotateTo(position, TPI_BattleBorn.Game.game.player.position);
+
+                if (Globals.GetDistance(position, TPI_BattleBorn.Game.game.player.position) < 15)
+                {
+                    TPI_BattleBorn.Game.game.player.GetHit(attackDamage);
+                    dead = true;
+                }
             }
+           
         }
 
         /// <summary>

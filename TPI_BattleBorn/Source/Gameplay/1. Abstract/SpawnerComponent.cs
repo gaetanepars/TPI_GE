@@ -19,8 +19,6 @@ namespace TPI_BattleBorn
         public Vector2 position;
         public Vector2 dimensions;
 
-        public string path;
-
         //basic texture placeholder while waiting for animations
         public Texture2D textureToDraw;
 

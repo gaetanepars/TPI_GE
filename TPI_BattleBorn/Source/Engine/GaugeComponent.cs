@@ -24,6 +24,7 @@ namespace TPI_BattleBorn
 
         public GaugeComponent(Game game, int Border,Vector2 Position, Vector2 Dimensions, Color CurrentColor, Color MaxColor, int CurrentNumber, int MaxNumber) : base(game)
         {
+            DrawOrder = 70;
             border = Border;
 
             currentNumber = CurrentNumber;
@@ -35,8 +36,8 @@ namespace TPI_BattleBorn
             position = Position;
             dimensions = Dimensions;
 
-            currentQuantity = new Bar("CurrentGauge", new Vector2(0, 0), new Vector2(Dimensions.X - border * 2, Dimensions.Y - border * 2),CurrentColor);
-            maxQuantity = new Bar("MaxGauge", new Vector2(0, 0), new Vector2(Dimensions.X, Dimensions.Y), CurrentColor);
+            currentQuantity = new Bar("CurrentGauge", new Vector2(position.X, position.Y), new Vector2(Dimensions.X - border * 2, Dimensions.Y - border * 2),CurrentColor);
+            maxQuantity = new Bar("MaxGauge", new Vector2(position.X, position.Y), new Vector2(Dimensions.X, Dimensions.Y), CurrentColor);
         }
 
         public override void Initialize()
@@ -50,7 +51,6 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
-            currentQuantity.dimensions = new Vector2(currentNumber / maxNumber * (maxQuantity.dimensions.X - border * 2), currentQuantity.dimensions.Y);
             base.Update(gameTime);
         }
 

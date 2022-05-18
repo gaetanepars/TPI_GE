@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background0.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/CurrentBar.png</File>
+    <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Cursor.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy1.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/File.spritefont</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/fireball.png</File>
@@ -17,6 +18,7 @@
   <DestFiles>
     <File xsi:nil="true" />
     <File>CurrentGauge.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Font.spritefont</File>
     <File xsi:nil="true" />
