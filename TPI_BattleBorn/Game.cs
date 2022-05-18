@@ -16,6 +16,7 @@ namespace TPI_BattleBorn
         public PlayerComponent player;
         public HUDComponent hud;
         public CursorComponent cursor;
+        public MainMenuComponent mainMenu;
 
         public Texture2D background;
 
@@ -61,6 +62,36 @@ namespace TPI_BattleBorn
             Globals.keyboard = Keyboard.GetState();
             Globals.gameTime = gameTime;
             cursor.position = new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y);
+
+            if (Globals.keyboard.IsKeyDown(Keys.Escape))
+            {
+                for (int i = 0; i < Components.Count; i++)
+                {
+                    if(!(Components[i] is MainMenuComponent))
+                    {
+                        ((DrawableGameComponent)Components[i]).Enabled = false;
+                    }
+                }
+
+                mainMenu = new MainMenuComponent(game);
+                Components.Add(mainMenu);
+            }
+
+            if (Globals.keyboard.IsKeyDown(Keys.Enter))
+            {
+                for (int i = 0; i < Components.Count; i++)
+                {
+                    if (!(Components[i] is MainMenuComponent))
+                    {
+                        ((DrawableGameComponent)Components[i]).Enabled = true;
+                    }
+                }
+
+                mainMenu.Enabled = false;
+                mainMenu.Visible = false;
+                Components.Remove(mainMenu);
+            }
+
 
             if (player != null && player.score==100 && Globals.levelIndex!=2)
             {

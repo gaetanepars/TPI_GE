@@ -154,6 +154,7 @@ namespace TPI_BattleBorn
 
             if (dead == true)
             {
+
                 TPI_BattleBorn.Game.game.Components.Remove(this);
                 TPI_BattleBorn.Game.game.player = null;
 
