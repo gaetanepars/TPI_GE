@@ -6,23 +6,29 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class Enemy1 : EnemyComponent
+    public class MenuComponent : DrawableGameComponent
     {
-        public Enemy1(Game game, Vector2 Position) : base(game,"Enemy1", Position, new Vector2(60,60))
+        public Vector2 position;
+        public Vector2 dimensions;
+
+        public Texture2D menuScreen;
+        public MenuComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
-            attackDamage = 1;
-            health = 5;
-            speed = 2;
+            position = Position;
+            dimensions = Dimensions;
+
+            menuScreen = Globals.content.Load<Texture2D>(Path);
         }
+
         public override void Initialize()
         {
             base.Initialize();
         }
+
         protected override void LoadContent()
         {
             base.LoadContent();
         }
-
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -30,9 +36,11 @@ namespace TPI_BattleBorn
 
         public override void Draw(GameTime gameTime)
         {
+            Globals.spriteBatch.Begin();
+            Globals.spriteBatch.Draw(menuScreen, new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), Color.White);
+            Globals.spriteBatch.End();
+
             base.Draw(gameTime);
         }
-
-
     }
 }

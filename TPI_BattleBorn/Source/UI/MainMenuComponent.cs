@@ -5,15 +5,15 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class MainMenuComponent : DrawableGameComponent
+    public class MainMenu : MenuComponent
     {
-        public MainMenuComponent(Microsoft.Xna.Framework.Game game) : base(game)
-        {
-        }
+        public ButtonComponent continueButton;
+        public ButtonComponent restartButton;
+        public ButtonComponent quitButton;
 
-        public override void Draw(GameTime gameTime)
+        public MainMenu(Game game) : base(game,"MainMenu",new Vector2(Globals.screenWidth/2,Globals.screenHeight/2),new Vector2(Globals.screenWidth,Globals.screenHeight))
         {
-            base.Draw(gameTime);
+
         }
 
         public override void Initialize()
@@ -21,14 +21,21 @@ namespace TPI_BattleBorn
             base.Initialize();
         }
 
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
         }
 
-        protected override void LoadContent()
+        public override void Draw(GameTime gameTime)
         {
-            base.LoadContent();
+            base.Draw(gameTime);
         }
+
+
     }
 }

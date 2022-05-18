@@ -6,18 +6,22 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class Enemy1 : EnemyComponent
+    public class BonusMenu : MenuComponent
     {
-        public Enemy1(Game game, Vector2 Position) : base(game,"Enemy1", Position, new Vector2(60,60))
+        public ButtonComponent bonusHealthButton;
+        public ButtonComponent bonusManaButton;
+        public ButtonComponent bonusSpeedButton;
+
+        public BonusMenu(Game game) : base(game,"BonusMenu",new Vector2(Globals.screenWidth/2,Globals.screenHeight/2), new Vector2(Globals.screenWidth, Globals.screenHeight))
         {
-            attackDamage = 1;
-            health = 5;
-            speed = 2;
+
         }
+
         public override void Initialize()
         {
             base.Initialize();
         }
+
         protected override void LoadContent()
         {
             base.LoadContent();
@@ -32,6 +36,9 @@ namespace TPI_BattleBorn
         {
             base.Draw(gameTime);
         }
+
+
+
 
 
     }

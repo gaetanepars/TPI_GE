@@ -9,11 +9,7 @@ namespace TPI_BattleBorn
     {
         public ButtonComponent(Game game) : base(game)
         {
-        }
 
-        public override void Draw(GameTime gameTime)
-        {
-            base.Draw(gameTime);
         }
 
         public override void Initialize()
@@ -21,14 +17,19 @@ namespace TPI_BattleBorn
             base.Initialize();
         }
 
+        protected override void LoadContent()
+        {
+            base.LoadContent();
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
         }
 
-        protected override void LoadContent()
+        public override void Draw(GameTime gameTime)
         {
-            base.LoadContent();
+            base.Draw(gameTime);
         }
     }
 }

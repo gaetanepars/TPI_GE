@@ -8,6 +8,7 @@ namespace TPI_BattleBorn
     public class Game : Microsoft.Xna.Framework.Game
     {
         private GraphicsDeviceManager _graphics;
+
         private const int numberOfLevels = 3;
 
         public static Game game;
@@ -72,7 +73,6 @@ namespace TPI_BattleBorn
                         ((DrawableGameComponent)Components[i]).Enabled = false;
                     }
                 }
-
                 mainMenu = new MainMenuComponent(game);
                 Components.Add(mainMenu);
             }
@@ -86,7 +86,6 @@ namespace TPI_BattleBorn
                         ((DrawableGameComponent)Components[i]).Enabled = true;
                     }
                 }
-
                 mainMenu.Enabled = false;
                 mainMenu.Visible = false;
                 Components.Remove(mainMenu);

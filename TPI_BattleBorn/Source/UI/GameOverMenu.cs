@@ -4,20 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace TPI_BattleBorn
+namespace TPI_BattleBorn.Source.UI
 {
-    public class Enemy1 : EnemyComponent
+    public class GameOverMenu : MenuComponent
     {
-        public Enemy1(Game game, Vector2 Position) : base(game,"Enemy1", Position, new Vector2(60,60))
+
+        public ButtonComponent restartButton;
+        public ButtonComponent quitButton;
+
+        public GameOverMenu(Game game) : base(game,"GameOverMenu",new Vector2(Globals.screenWidth/2,Globals.screenHeight/2), new Vector2(Globals.screenWidth,Globals.screenHeight))
         {
-            attackDamage = 1;
-            health = 5;
-            speed = 2;
+
         }
+
         public override void Initialize()
         {
             base.Initialize();
         }
+
         protected override void LoadContent()
         {
             base.LoadContent();
@@ -32,6 +36,10 @@ namespace TPI_BattleBorn
         {
             base.Draw(gameTime);
         }
+
+
+
+
 
 
     }
