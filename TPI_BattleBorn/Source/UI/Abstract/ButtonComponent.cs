@@ -56,8 +56,8 @@ namespace TPI_BattleBorn
         public override void Draw(GameTime gameTime)
         {
             Globals.spriteBatch.Begin();
-            Globals.spriteBatch.Draw(buttonTexture, position, Color.White);
-            Globals.spriteBatch.DrawString(Globals.font, text, position, Color.Black);
+            Globals.spriteBatch.Draw(buttonTexture, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y),Color.White);
+            Globals.spriteBatch.DrawString(Globals.font, text, new Vector2 ((position.X+dimensions.X/3),(position.Y+25)), Color.Black);
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);

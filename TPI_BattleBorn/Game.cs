@@ -133,8 +133,6 @@ namespace TPI_BattleBorn
                 Globals.levelIndex = -1;
 
                 LoadNext();
-
-                
             }
 
             if(gameOverMenu.quitButton.buttonClicked==true || mainMenu.quitButton.buttonClicked == true || victoryMenu.quitButton.buttonClicked==true)

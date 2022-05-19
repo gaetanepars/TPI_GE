@@ -194,7 +194,7 @@ namespace TPI_BattleBorn
         private void CollisionManagement()
         {
             Rectangle bounds = BoundingRectangle;
-            int leftTile = (int)Math.Floor((float)bounds.Left / Tile.tileWidth);
+            int leftTile = (int)Math.Floor((float)bounds.Left/ Tile.tileWidth);
             int rightTile = (int)Math.Ceiling(((float)bounds.Right / Tile.tileWidth)) - 1;
             int topTile = (int)Math.Floor((float)bounds.Top / Tile.tileHeight);
             int bottomTile = (int)Math.Ceiling(((float)bounds.Bottom / Tile.tileHeight)) - 1;

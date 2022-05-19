@@ -11,11 +11,11 @@ namespace TPI_BattleBorn
         public ButtonComponent restartButton;
         public ButtonComponent quitButton;
 
-        public MainMenu(Game game) : base(game,"MainMenu",new Vector2(Globals.screenWidth/2,Globals.screenHeight/2),new Vector2(Globals.screenWidth,Globals.screenHeight))
+        public MainMenu(Game game) : base(game,"MainMenu",new Vector2(0,0),new Vector2(Globals.screenWidth,Globals.screenHeight))
         {
-            continueButton = new ButtonComponent(game, "Continue", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), new Vector2(200, 150));
-            restartButton = new ButtonComponent(game, "Restart", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2 + 50), new Vector2(200, 150));
-            quitButton = new ButtonComponent(game, "Quit", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2 + 100), new Vector2(200, 150));
+            continueButton = new ButtonComponent(game, "Continue", new Vector2((Globals.screenWidth / 2)-100, Globals.screenHeight / 2), new Vector2(200, 50));
+            restartButton = new ButtonComponent(game, "Restart", new Vector2((Globals.screenWidth / 2)-100, (Globals.screenHeight / 2) + 100), new Vector2(200, 50));
+            quitButton = new ButtonComponent(game, "Quit", new Vector2((Globals.screenWidth / 2)-100, (Globals.screenHeight / 2) + 200), new Vector2(200, 50));
 
             TPI_BattleBorn.Game.game.Components.Add(continueButton);
             TPI_BattleBorn.Game.game.Components.Add(restartButton);

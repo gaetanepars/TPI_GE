@@ -41,7 +41,7 @@ namespace TPI_BattleBorn
         public override void Draw(GameTime gameTime)
         {
             Globals.spriteBatch.Begin();
-            Globals.spriteBatch.Draw(menuScreen, new Vector2(0,0), Color.White);
+            Globals.spriteBatch.Draw(menuScreen, position, Color.White);
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);
