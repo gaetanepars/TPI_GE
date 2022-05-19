@@ -87,3 +87,8 @@ C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Max
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\CurrentGauge.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MaxGauge.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Cursor.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Button.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\BonusMenu.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\GameOverMenu.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MainMenu.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\VictoryMenu.xnb

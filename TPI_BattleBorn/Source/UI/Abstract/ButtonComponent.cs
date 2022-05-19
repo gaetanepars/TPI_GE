@@ -14,15 +14,22 @@ namespace TPI_BattleBorn
 
         public Texture2D buttonTexture;
 
+        public string text;
+
         public bool buttonHovered;
         public bool buttonClicked;
 
-        public ButtonComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
+        public ButtonComponent(Game game, string Text, Vector2 Position, Vector2 Dimensions) : base(game)
         {
+            DrawOrder = 102;
+            Enabled = false;
+            Visible = false;
+
             position = Position;
             dimensions = Dimensions;
+            text = Text;
 
-            buttonTexture = Globals.content.Load<Texture2D>(Path);
+            buttonTexture = Globals.content.Load<Texture2D>("Button");
 
         }
 
@@ -50,6 +57,7 @@ namespace TPI_BattleBorn
         {
             Globals.spriteBatch.Begin();
             Globals.spriteBatch.Draw(buttonTexture, position, Color.White);
+            Globals.spriteBatch.DrawString(Globals.font, text, position, Color.Black);
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);

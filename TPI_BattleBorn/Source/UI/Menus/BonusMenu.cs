@@ -14,9 +14,9 @@ namespace TPI_BattleBorn
 
         public BonusMenu(Game game) : base(game,"BonusMenu",new Vector2(Globals.screenWidth/2,Globals.screenHeight/2), new Vector2(Globals.screenWidth, Globals.screenHeight))
         {
-            bonusHealthButton = new ButtonComponent(game, "BonusHPButton", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), new Vector2(200, 150));
-            bonusManaButton = new ButtonComponent(game, "BonusManaButton", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2+50), new Vector2(200, 150));
-            bonusSpeedButton = new ButtonComponent(game, "BonusSpeedButton", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2+100), new Vector2(200, 150));
+            bonusHealthButton = new ButtonComponent(game, "HP+", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), new Vector2(200, 150));
+            bonusManaButton = new ButtonComponent(game, "Mana+", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2+50), new Vector2(200, 150));
+            bonusSpeedButton = new ButtonComponent(game, "Speed+", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2+100), new Vector2(200, 150));
 
             TPI_BattleBorn.Game.game.Components.Add(bonusHealthButton);
             TPI_BattleBorn.Game.game.Components.Add(bonusManaButton);
@@ -38,31 +38,20 @@ namespace TPI_BattleBorn
             if (bonusHealthButton.buttonClicked == true)
             {
                 TPI_BattleBorn.Game.game.player.maxHealth += 5;
-
-                TPI_BattleBorn.Game.game.bonusMenu.Enabled = false;
-                TPI_BattleBorn.Game.game.bonusMenu.Visible = false;
-
-                TPI_BattleBorn.Game.game.Components.Remove(this);
+                Disable();
             }
 
             else if (bonusManaButton.buttonClicked == true)
             {
                 TPI_BattleBorn.Game.game.player.maxMana += 5;
+                Disable();
 
-                TPI_BattleBorn.Game.game.bonusMenu.Enabled = false;
-                TPI_BattleBorn.Game.game.bonusMenu.Visible = false;
-
-                TPI_BattleBorn.Game.game.Components.Remove(this);
             }
 
             else if (bonusSpeedButton.buttonClicked == true)
             {
                 TPI_BattleBorn.Game.game.player.speed += 1;
-
-                TPI_BattleBorn.Game.game.bonusMenu.Enabled = false;
-                TPI_BattleBorn.Game.game.bonusMenu.Visible = false;
-
-                TPI_BattleBorn.Game.game.Components.Remove(this);
+                Disable();
             }
 
             base.Update(gameTime);
@@ -73,9 +62,34 @@ namespace TPI_BattleBorn
             base.Draw(gameTime);
         }
 
+        public void Enable()
+        {
+            bonusHealthButton.Enabled = true;
+            bonusHealthButton.Visible = true;
 
+            bonusManaButton.Enabled = true;
+            bonusManaButton.Visible = true;
 
+            bonusSpeedButton.Enabled = true;
+            bonusSpeedButton.Enabled = true;
 
+            Enabled = true;
+            Visible = true;
+        }
 
+        public void Disable()
+        {
+            bonusHealthButton.Enabled = false;
+            bonusHealthButton.Visible = false;
+
+            bonusManaButton.Enabled = false;
+            bonusManaButton.Visible = false;
+
+            bonusSpeedButton.Enabled = false;
+            bonusSpeedButton.Enabled = false;
+
+            Enabled = false;
+            Visible = false;
+        }
     }
 }

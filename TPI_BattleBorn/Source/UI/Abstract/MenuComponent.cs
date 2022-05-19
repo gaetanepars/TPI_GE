@@ -15,6 +15,9 @@ namespace TPI_BattleBorn
 
         public MenuComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
+            Enabled = false;
+            Visible = false;
+
             position = Position;
             dimensions = Dimensions;
 
@@ -38,7 +41,7 @@ namespace TPI_BattleBorn
         public override void Draw(GameTime gameTime)
         {
             Globals.spriteBatch.Begin();
-            Globals.spriteBatch.Draw(menuScreen, new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), Color.White);
+            Globals.spriteBatch.Draw(menuScreen, new Vector2(0,0), Color.White);
             Globals.spriteBatch.End();
 
             base.Draw(gameTime);

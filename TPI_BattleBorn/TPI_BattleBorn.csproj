@@ -20,9 +20,4 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\UI\Abstract\" />
-    <Folder Include="Source\UI\Menus\" />
-    <Folder Include="Source\UI\Buttons\" />
-  </ItemGroup>
 </Project>

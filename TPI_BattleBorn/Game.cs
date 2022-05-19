@@ -22,7 +22,7 @@ namespace TPI_BattleBorn
         public MainMenu mainMenu;
         public GameOverMenu gameOverMenu;
         public BonusMenu bonusMenu;
-        //public VictoryMenu victoryMenu;
+        public VictoryMenu victoryMenu;
 
         public Texture2D background;
 
@@ -51,6 +51,18 @@ namespace TPI_BattleBorn
             cursor = new CursorComponent(game, "Cursor", new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y), new Vector2(15, 15));
             Components.Add(cursor);
 
+            mainMenu = new MainMenu(game);
+            Components.Add(mainMenu);
+
+            gameOverMenu = new GameOverMenu(game);
+            Components.Add(gameOverMenu);
+
+            bonusMenu = new BonusMenu(game);
+            Components.Add(bonusMenu);
+
+            victoryMenu = new VictoryMenu(game);
+            Components.Add(victoryMenu);
+
             LoadNext();
             
             base.Initialize();
@@ -73,29 +85,27 @@ namespace TPI_BattleBorn
             {
                 for (int i = 0; i < Components.Count; i++)
                 {
-                    if(!(Components[i] is MainMenu))
+                    if(!(Components[i] is MainMenu||Components[i] is CursorComponent))
                     {
                         ((DrawableGameComponent)Components[i]).Enabled = false;
+                        ((DrawableGameComponent)Components[i]).Visible = false;
                     }
                 }
-                mainMenu = new MainMenu(game);
-                Components.Add(mainMenu);
+                mainMenu.Enable();
             }
 
             if (Globals.keyboard.IsKeyDown(Keys.Enter) || mainMenu.continueButton.buttonClicked == true)
             {
                 for (int i = 0; i < Components.Count; i++)
                 {
-                    if (!(Components[i] is MainMenu))
+                    if (!(Components[i] is MenuComponent || Components[i] is CursorComponent || Components[i] is ButtonComponent))
                     {
                         ((DrawableGameComponent)Components[i]).Enabled = true;
+                        ((DrawableGameComponent)Components[i]).Visible = true;
                     }
                 }
-                mainMenu.Enabled = false;
-                mainMenu.Visible = false;
-                Components.Remove(mainMenu);
+                mainMenu.Disable();
             }
-
 
             if (player != null && player.score==100 && Globals.levelIndex!=2)
             {
@@ -112,28 +122,26 @@ namespace TPI_BattleBorn
                 LoadGameOver();
             }
 
-            if(gameOverMenu.restartButton.buttonClicked==true|| mainMenu.restartButton.buttonClicked == true)
+            if(gameOverMenu.restartButton.buttonClicked==true|| mainMenu.restartButton.buttonClicked == true || victoryMenu.restartButton.buttonClicked==true)
             {
+                gameOverMenu.Disable();
+
+                mainMenu.Disable();
+
+                victoryMenu.Disable();
+
                 Globals.levelIndex = -1;
+
                 LoadNext();
 
-                gameOverMenu.Enabled = false;
-                gameOverMenu.Visible = false;
-
-                mainMenu.Enabled = false;
-                mainMenu.Visible = false;
-
-                Components.Remove(gameOverMenu);
-                Components.Remove(mainMenu);
                 
             }
 
-            if(gameOverMenu.quitButton.buttonClicked==true || mainMenu.quitButton.buttonClicked == true)
+            if(gameOverMenu.quitButton.buttonClicked==true || mainMenu.quitButton.buttonClicked == true || victoryMenu.quitButton.buttonClicked==true)
             {
                 Environment.Exit(0);
             }
             
-
             base.Update(gameTime);
         }
 
@@ -151,7 +159,7 @@ namespace TPI_BattleBorn
         /// <summary>
         /// Load the next level and add it to the components list (and the first)
         /// </summary>
-        public void LoadNext()
+        private void LoadNext()
         {
             Globals.levelIndex = (Globals.levelIndex + 1) % numberOfLevels;
 
@@ -184,13 +192,29 @@ namespace TPI_BattleBorn
 
         public void LoadGameOver()
         {
-            gameOverMenu = new GameOverMenu(game);
-            Components.Add(gameOverMenu);
+            for (int i = 0; i < Components.Count; i++)
+            {
+                if (!(Components[i] is GameOverMenu || Components[i] is CursorComponent))
+                {
+                    ((DrawableGameComponent)Components[i]).Enabled = false;
+                    ((DrawableGameComponent)Components[i]).Visible = false;
+                }
+            }
+            gameOverMenu.Enable();
         }
 
         public void LoadVictory()
         {
+            for (int i = 0; i < Components.Count; i++)
+            {
+                if (!(Components[i] is VictoryMenu || Components[i] is CursorComponent))
+                {
+                    ((DrawableGameComponent)Components[i]).Enabled = false;
+                    ((DrawableGameComponent)Components[i]).Visible = false;
+                }
+            }
 
+            victoryMenu.Enable();
         }
 
         public static class Program

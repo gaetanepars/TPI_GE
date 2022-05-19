@@ -5,24 +5,34 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background0.png</File>
+    <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/BonusMenu.png</File>
+    <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Button.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/CurrentBar.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Cursor.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy1.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/File.spritefont</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/fireball.png</File>
+    <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/GameOverMenu.png</File>
+    <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/MainMenu.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/MaxBar.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Obstacle.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Player.png</File>
     <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Spawner1.png</File>
+    <File>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/VictoryMenu.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>CurrentGauge.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>Font.spritefont</File>
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>MaxGauge.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
