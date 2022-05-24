@@ -23,14 +23,12 @@ namespace TPI_BattleBorn
 
         public static int screenWidth;
         public static int screenHeight;
-        
-        public static int bonusHP;
-        public static int bonusMana;
-        public static int bonusSpeed;
-
-        public static bool paused;
 
         public static int levelIndex=-1;
+
+        public static int speedBonus;
+        public static int hpBonus;
+        public static int manaBonus;
 
         public static float GetDistance(Vector2 position, Vector2 target)
         {

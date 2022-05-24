@@ -12,11 +12,11 @@ namespace TPI_BattleBorn
         public ButtonComponent bonusManaButton;
         public ButtonComponent bonusSpeedButton;
 
-        public BonusMenu(Game game) : base(game,"BonusMenu",new Vector2(Globals.screenWidth/2,Globals.screenHeight/2), new Vector2(Globals.screenWidth, Globals.screenHeight))
+        public BonusMenu(Game game) : base(game,"BonusMenu",new Vector2(0,0), new Vector2(Globals.screenWidth, Globals.screenHeight))
         {
-            bonusHealthButton = new ButtonComponent(game, "HP+", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2), new Vector2(200, 150));
-            bonusManaButton = new ButtonComponent(game, "Mana+", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2+50), new Vector2(200, 150));
-            bonusSpeedButton = new ButtonComponent(game, "Speed+", new Vector2(Globals.screenWidth / 2, Globals.screenHeight / 2+100), new Vector2(200, 150));
+            bonusHealthButton = new ButtonComponent(game, "HP+",new Vector2((Globals.screenWidth/2)-100,(Globals.screenHeight/2)-100), new Vector2(200,50));
+            bonusManaButton = new ButtonComponent(game, "Mana+", new Vector2((Globals.screenWidth / 2) - 100, Globals.screenHeight / 2), new Vector2(200, 50));
+            bonusSpeedButton = new ButtonComponent(game, "Speed+", new Vector2((Globals.screenWidth / 2) - 100, (Globals.screenHeight / 2) + 100), new Vector2(200, 50));
 
             TPI_BattleBorn.Game.game.Components.Add(bonusHealthButton);
             TPI_BattleBorn.Game.game.Components.Add(bonusManaButton);
@@ -37,21 +37,51 @@ namespace TPI_BattleBorn
         {
             if (bonusHealthButton.buttonClicked == true)
             {
-                TPI_BattleBorn.Game.game.player.maxHealth += 5;
+                bonusHealthButton.buttonClicked = false;
+                Globals.hpBonus++;
+                TPI_BattleBorn.Game.game.player.maxHealth += Globals.hpBonus;
                 Disable();
+
+                for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+                {
+                    if (!(TPI_BattleBorn.Game.game.Components[i] is MenuComponent|| TPI_BattleBorn.Game.game.Components[i] is CursorComponent || TPI_BattleBorn.Game.game.Components[i] is ButtonComponent))
+                    {
+                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Enabled = true;
+                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Visible = true;
+                    }
+                }
             }
 
             else if (bonusManaButton.buttonClicked == true)
             {
-                TPI_BattleBorn.Game.game.player.maxMana += 5;
+                bonusManaButton.buttonClicked = false;
+                Globals.manaBonus++;
+                TPI_BattleBorn.Game.game.player.maxMana += Globals.manaBonus;
                 Disable();
-
+                for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+                {
+                    if (!(TPI_BattleBorn.Game.game.Components[i] is MenuComponent || TPI_BattleBorn.Game.game.Components[i] is CursorComponent || TPI_BattleBorn.Game.game.Components[i] is ButtonComponent))
+                    {
+                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Enabled = true;
+                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Visible = true;
+                    }
+                }
             }
 
             else if (bonusSpeedButton.buttonClicked == true)
             {
-                TPI_BattleBorn.Game.game.player.speed += 1;
+                bonusSpeedButton.buttonClicked = false;
+                Globals.speedBonus++;
+                TPI_BattleBorn.Game.game.player.speed += Globals.speedBonus;
                 Disable();
+                for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+                {
+                    if (!(TPI_BattleBorn.Game.game.Components[i] is MenuComponent || TPI_BattleBorn.Game.game.Components[i] is CursorComponent || TPI_BattleBorn.Game.game.Components[i] is ButtonComponent))
+                    {
+                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Enabled = true;
+                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Visible = true;
+                    }
+                }
             }
 
             base.Update(gameTime);
@@ -71,7 +101,7 @@ namespace TPI_BattleBorn
             bonusManaButton.Visible = true;
 
             bonusSpeedButton.Enabled = true;
-            bonusSpeedButton.Enabled = true;
+            bonusSpeedButton.Visible = true;
 
             Enabled = true;
             Visible = true;
@@ -86,7 +116,7 @@ namespace TPI_BattleBorn
             bonusManaButton.Visible = false;
 
             bonusSpeedButton.Enabled = false;
-            bonusSpeedButton.Enabled = false;
+            bonusSpeedButton.Visible = false;
 
             Enabled = false;
             Visible = false;

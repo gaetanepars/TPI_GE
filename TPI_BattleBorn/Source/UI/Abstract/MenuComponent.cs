@@ -33,6 +33,7 @@ namespace TPI_BattleBorn
         {
             base.LoadContent();
         }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

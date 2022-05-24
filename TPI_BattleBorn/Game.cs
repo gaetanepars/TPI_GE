@@ -48,20 +48,7 @@ namespace TPI_BattleBorn
 
             IsMouseVisible = false;
 
-            cursor = new CursorComponent(game, "Cursor", new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y), new Vector2(15, 15));
-            Components.Add(cursor);
-
-            mainMenu = new MainMenu(game);
-            Components.Add(mainMenu);
-
-            gameOverMenu = new GameOverMenu(game);
-            Components.Add(gameOverMenu);
-
-            bonusMenu = new BonusMenu(game);
-            Components.Add(bonusMenu);
-
-            victoryMenu = new VictoryMenu(game);
-            Components.Add(victoryMenu);
+            
 
             LoadNext();
             
@@ -104,15 +91,32 @@ namespace TPI_BattleBorn
                         ((DrawableGameComponent)Components[i]).Visible = true;
                     }
                 }
+                mainMenu.continueButton.buttonClicked = false;
                 mainMenu.Disable();
             }
 
-            if (player != null && player.score==100 && Globals.levelIndex!=2)
+            if (player!=null && player.experience == 10)
+            {
+                for (int i = 0; i < Components.Count; i++)
+                {
+                    if (!(Components[i] is BonusMenu || Components[i] is CursorComponent))
+                    {
+                        ((DrawableGameComponent)Components[i]).Enabled = false;
+                        ((DrawableGameComponent)Components[i]).Visible = false;
+                    }
+                }
+                player.experience = 0;
+                bonusMenu.Enable();
+                player.playerLevel++;
+            }
+
+            if (player != null && player.score==100 && Globals.levelIndex<2)
             {
                 player.ResetPlayer();
                 LoadNext();
             }
-            else if(player!=null && player.score==100 && Globals.levelIndex==2)
+
+            else if(player!=null && player.score==1 && Globals.levelIndex==2)
             {
                 LoadVictory();
             }
@@ -124,11 +128,7 @@ namespace TPI_BattleBorn
 
             if(gameOverMenu.restartButton.buttonClicked==true|| mainMenu.restartButton.buttonClicked == true || victoryMenu.restartButton.buttonClicked==true)
             {
-                gameOverMenu.Disable();
-
-                mainMenu.Disable();
-
-                victoryMenu.Disable();
+                Components.Clear();
 
                 Globals.levelIndex = -1;
 
@@ -159,6 +159,21 @@ namespace TPI_BattleBorn
         /// </summary>
         private void LoadNext()
         {
+            cursor = new CursorComponent(game, "Cursor", new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y), new Vector2(15, 15));
+            Components.Add(cursor);
+
+            mainMenu = new MainMenu(game);
+            Components.Add(mainMenu);
+
+            gameOverMenu = new GameOverMenu(game);
+            Components.Add(gameOverMenu);
+
+            bonusMenu = new BonusMenu(game);
+            Components.Add(bonusMenu);
+
+            victoryMenu = new VictoryMenu(game);
+            Components.Add(victoryMenu);
+
             Globals.levelIndex = (Globals.levelIndex + 1) % numberOfLevels;
 
             if (level == null)

@@ -43,9 +43,6 @@ namespace TPI_BattleBorn
                 manaMeter.currentNumber = TPI_BattleBorn.Game.game.player.mana;
                 manaMeter.maxNumber = TPI_BattleBorn.Game.game.player.maxMana;
 
-                healthMeter.currentQuantity.dimensions = new Vector2(healthMeter.currentNumber / healthMeter.maxNumber * (healthMeter.maxQuantity.dimensions.X - healthMeter.border * 2), healthMeter.currentQuantity.dimensions.Y);
-                manaMeter.currentQuantity.dimensions = new Vector2(manaMeter.currentNumber / manaMeter.maxNumber * (manaMeter.maxQuantity.dimensions.X - manaMeter.border * 2), manaMeter.currentQuantity.dimensions.Y);
-
                 informationString = "Experience = " + TPI_BattleBorn.Game.game.player.experience + " Score = " + TPI_BattleBorn.Game.game.player.score + " Player level " + TPI_BattleBorn.Game.game.player.playerLevel;
             }
             else

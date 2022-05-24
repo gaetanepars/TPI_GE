@@ -83,9 +83,15 @@ namespace TPI_BattleBorn
 
         public void ResetPlayer()
         {
+            Globals.hpBonus = 0;
+            Globals.manaBonus = 0;
+            Globals.speedBonus = 0;
+
             score = 0;
             playerLevel = 0;
+
             potions = 2;
+
             health = 5;
             speed = 2;
             dead = false;
@@ -216,12 +222,12 @@ namespace TPI_BattleBorn
                             if (absDepthY < absDepthX && collision == TileStatus.Solid)
                             {
 
-                                position = new Vector2(position.X, position.Y + depth.Y);
+                                position = new Vector2(position.X, position.Y - Tile.tileHeight );
                                 bounds = BoundingRectangle;
                             }
                             else if (absDepthY>absDepthX && collision == TileStatus.Solid)
                             {
-                                position = new Vector2(position.X + depth.X, position.Y);
+                                position = new Vector2(position.X +Tile.tileWidth, position.Y);
                                 bounds = BoundingRectangle;
                             }
                         }

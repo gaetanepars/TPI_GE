@@ -51,6 +51,7 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
+            currentQuantity.dimensions= new Vector2(currentNumber / maxNumber * (maxQuantity.dimensions.X - border * 2), currentQuantity.dimensions.Y);
             base.Update(gameTime);
         }
 
