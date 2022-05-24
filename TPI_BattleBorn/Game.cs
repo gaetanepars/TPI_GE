@@ -48,8 +48,6 @@ namespace TPI_BattleBorn
 
             IsMouseVisible = false;
 
-            
-
             LoadNext();
             
             base.Initialize();
@@ -70,12 +68,12 @@ namespace TPI_BattleBorn
 
             if (Globals.keyboard.IsKeyDown(Keys.Escape))
             {
-                for (int i = 0; i < Components.Count; i++)
+                foreach(GameComponent component in Components)
                 {
-                    if(!(Components[i] is MainMenu||Components[i] is CursorComponent))
+                    if (!(component is MainMenu || component is CursorComponent))
                     {
-                        ((DrawableGameComponent)Components[i]).Enabled = false;
-                        ((DrawableGameComponent)Components[i]).Visible = false;
+                        ((DrawableGameComponent)component).Enabled = false;
+                        ((DrawableGameComponent)component).Visible = false;
                     }
                 }
                 mainMenu.Enable();
@@ -83,26 +81,26 @@ namespace TPI_BattleBorn
 
             if (Globals.keyboard.IsKeyDown(Keys.Enter) || mainMenu.continueButton.buttonClicked == true)
             {
-                for (int i = 0; i < Components.Count; i++)
+                foreach(GameComponent component in Components)
                 {
-                    if (!(Components[i] is MenuComponent || Components[i] is CursorComponent || Components[i] is ButtonComponent))
+                    if (!(component is MenuComponent || component is CursorComponent || component is ButtonComponent))
                     {
-                        ((DrawableGameComponent)Components[i]).Enabled = true;
-                        ((DrawableGameComponent)Components[i]).Visible = true;
+                        ((DrawableGameComponent)component).Enabled = true;
+                        ((DrawableGameComponent)component).Visible = true;
                     }
                 }
                 mainMenu.continueButton.buttonClicked = false;
                 mainMenu.Disable();
             }
 
-            if (player!=null && player.experience == 10)
+            if (player!=null && player.experience == 100)
             {
-                for (int i = 0; i < Components.Count; i++)
+                foreach(GameComponent component in Components)
                 {
-                    if (!(Components[i] is BonusMenu || Components[i] is CursorComponent))
+                    if (!(component is BonusMenu || component is CursorComponent))
                     {
-                        ((DrawableGameComponent)Components[i]).Enabled = false;
-                        ((DrawableGameComponent)Components[i]).Visible = false;
+                        ((DrawableGameComponent)component).Enabled = false;
+                        ((DrawableGameComponent)component).Visible = false;
                     }
                 }
                 player.experience = 0;
@@ -116,7 +114,7 @@ namespace TPI_BattleBorn
                 LoadNext();
             }
 
-            else if(player!=null && player.score==1 && Globals.levelIndex==2)
+            else if (player!=null && player.score==100 && Globals.levelIndex==2)
             {
                 LoadVictory();
             }
@@ -126,7 +124,7 @@ namespace TPI_BattleBorn
                 LoadGameOver();
             }
 
-            if(gameOverMenu.restartButton.buttonClicked==true|| mainMenu.restartButton.buttonClicked == true || victoryMenu.restartButton.buttonClicked==true)
+            if (gameOverMenu.restartButton.buttonClicked==true || mainMenu.restartButton.buttonClicked == true || victoryMenu.restartButton.buttonClicked==true)
             {
                 Components.Clear();
 
@@ -205,12 +203,12 @@ namespace TPI_BattleBorn
 
         public void LoadGameOver()
         {
-            for (int i = 0; i < Components.Count; i++)
+            foreach (GameComponent component in Components)
             {
-                if (!(Components[i] is GameOverMenu || Components[i] is CursorComponent))
+                if (!(component is GameOverMenu || component is CursorComponent))
                 {
-                    ((DrawableGameComponent)Components[i]).Enabled = false;
-                    ((DrawableGameComponent)Components[i]).Visible = false;
+                    ((DrawableGameComponent)component).Enabled = false;
+                    ((DrawableGameComponent)component).Visible = false;
                 }
             }
             gameOverMenu.Enable();
@@ -218,12 +216,12 @@ namespace TPI_BattleBorn
 
         public void LoadVictory()
         {
-            for (int i = 0; i < Components.Count; i++)
+            foreach (GameComponent component in Components)
             {
-                if (!(Components[i] is VictoryMenu || Components[i] is CursorComponent))
+                if (!(component is VictoryMenu || component is CursorComponent))
                 {
-                    ((DrawableGameComponent)Components[i]).Enabled = false;
-                    ((DrawableGameComponent)Components[i]).Visible = false;
+                    ((DrawableGameComponent)component).Enabled = false;
+                    ((DrawableGameComponent)component).Visible = false;
                 }
             }
 

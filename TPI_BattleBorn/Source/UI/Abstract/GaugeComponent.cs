@@ -25,6 +25,7 @@ namespace TPI_BattleBorn
         public GaugeComponent(Game game, int Border,Vector2 Position, Vector2 Dimensions, Color CurrentColor, Color MaxColor, int CurrentNumber, int MaxNumber) : base(game)
         {
             DrawOrder = 70;
+
             border = Border;
 
             currentNumber = CurrentNumber;

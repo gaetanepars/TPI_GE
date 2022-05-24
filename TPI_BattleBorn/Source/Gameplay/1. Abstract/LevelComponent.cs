@@ -36,7 +36,6 @@ namespace TPI_BattleBorn
 
         public override void Initialize()
         {
-
             base.Initialize();
         }
 
@@ -131,7 +130,7 @@ namespace TPI_BattleBorn
             {
                 TPI_BattleBorn.Game.game.Components.Add(new Enemy1(TPI_BattleBorn.Game.game, new Vector2(enemyPosition.X,enemyPosition.Y)));
             }
-            else if(spriteSet == "Enemy2")
+            else if (spriteSet == "Enemy2")
             {
                 TPI_BattleBorn.Game.game.Components.Add(new Enemy2(TPI_BattleBorn.Game.game, new Vector2(enemyPosition.X,enemyPosition.Y)));
             }
@@ -188,14 +187,18 @@ namespace TPI_BattleBorn
                 while (line != null)
                 {
                     lines.Add(line);
+
                     if (line.Length != width)
                     {
                         throw new Exception(String.Format("Level Dimension Error"));
                     }
+
                     line = reader.ReadLine();
                 }
             }
+
             tiles = new Tile[width, lines.Count];
+
             for(int y = 0; y < Height; y++)
             {
                 for(int x = 0; x < Width; x++)
@@ -208,9 +211,9 @@ namespace TPI_BattleBorn
 
         private void DrawAllTiles(SpriteBatch spriteBatch)
         {
-            for(int y = 0; y < Height; y++)
+            for (int y = 0; y < Height; y++)
             {
-                for(int x = 0; x < Width; x++)
+                for (int x = 0; x < Width; x++)
                 {
                     Texture2D texture = tiles[x, y].texture;
                     if (texture != null)

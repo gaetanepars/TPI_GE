@@ -1,11 +1,14 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/{0}.txt","C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\Content\bin\Windows\Content\0.txt","CopyItem","File",274,274,0.0017383
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background0.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Background0.xnb","TextureProcessor","Texture2DContent",4371,3686485,0.1987252
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Background1.xnb","TextureProcessor","Texture2DContent",4370,3686485,0.1989534
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Background2.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Background2.xnb","TextureProcessor","Texture2DContent",4368,3686485,0.1880759
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/BonusMenu.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/BonusMenu.xnb","TextureProcessor","Texture2DContent",32599,3686485,0.20303
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Button.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Button.xnb","TextureProcessor","Texture2DContent",266,40085,0.1927788
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/CurrentBar.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/CurrentGauge.xnb","TextureProcessor","Texture2DContent",206,16885,0.1149927
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Cursor.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Cursor.xnb","TextureProcessor","Texture2DContent",286,985,0.121171
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Enemy1.xnb","TextureProcessor","Texture2DContent",203,14485,0.1123103
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy2.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Enemy2.xnb","TextureProcessor","Texture2DContent",205,14485,0.0032216
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/File.spritefont","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.1901558
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/fireball.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/fireball.xnb","TextureProcessor","Texture2DContent",159,3685,0.130997
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/GameOverMenu.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/GameOverMenu.xnb","TextureProcessor","Texture2DContent",32325,3686485,0.0845573
@@ -14,4 +17,6 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Obstacle.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Obstacle.xnb","TextureProcessor","Texture2DContent",205,14485,0.126771
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Player.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Player.xnb","TextureProcessor","Texture2DContent",164,5205,0.1223661
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Spawner1.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Spawner1.xnb","TextureProcessor","Texture2DContent",204,14485,0.129299
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Spawner2.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Spawner2.xnb","TextureProcessor","Texture2DContent",204,14485,0.0026588
+"C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/thunderbolt.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/thunderbolt.xnb","TextureProcessor","Texture2DContent",410,3685,0.0019985
 "C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/VictoryMenu.png","C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/VictoryMenu.xnb","TextureProcessor","Texture2DContent",24632,3686485,0.0671715

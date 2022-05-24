@@ -39,7 +39,7 @@ namespace TPI_BattleBorn
         {
             float distance = Globals.GetDistance(position, focus);
 
-            if(distance <= speed)
+            if (distance <= speed)
             {
                 return focus - position;
             }

@@ -42,7 +42,7 @@ namespace TPI_BattleBorn
         public Rectangle localBounds;
 
         CooldownTimer attackTimer = new CooldownTimer(1000);
-        CooldownTimer spellTimer = new CooldownTimer(5000);
+        CooldownTimer spellTimer = new CooldownTimer(800);
 
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
@@ -142,8 +142,9 @@ namespace TPI_BattleBorn
 
             if (Globals.mouse.RightButton == ButtonState.Pressed)
             {
-                if (spellTimer.Test() == true || mana!=0)
+                if (spellTimer.Test() == true && mana!=0)
                 {
+                    TPI_BattleBorn.Game.game.Components.Add(new Thunderbolt(TPI_BattleBorn.Game.game, new Vector2(TPI_BattleBorn.Game.game.player.position.X, TPI_BattleBorn.Game.game.player.position.Y), TPI_BattleBorn.Game.game.player, new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y)));
                     mana--;
                     spellTimer.ResetTime();
                 }
@@ -182,12 +183,14 @@ namespace TPI_BattleBorn
             Globals.spriteBatch.Begin();
             Globals.spriteBatch.Draw(textureToDraw, new Rectangle((int)(position.X), (int)(position.Y), (int)dimensions.X, (int)dimensions.Y), null, Color.White, rotation, new Vector2(textureToDraw.Bounds.Width / 2, textureToDraw.Bounds.Height / 2), new SpriteEffects(), 0);
             Globals.spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
         public void GetHit(int damage)
         {
             health -= damage;
+
             if (health <= 0)
             {
                 dead = true;

@@ -25,8 +25,9 @@ namespace TPI_BattleBorn
         public CooldownTimer spawnTimer;
         public SpawnerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
-            spawnCounter = 0;
             DrawOrder = 4;
+
+            spawnCounter = 0;
             position = Position;
             dimensions = Dimensions;
             dead = false;
@@ -82,6 +83,7 @@ namespace TPI_BattleBorn
         public virtual void GetHit(int damage)
         {
             health -= damage;
+
             if (health <= 0)
             {
                 dead = true;

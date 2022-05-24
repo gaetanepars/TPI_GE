@@ -31,7 +31,8 @@ namespace TPI_BattleBorn
         /// <returns></returns>
         public bool Test()
         {
-            if (timer.TotalMilliseconds >= milliseconds || timeUp){
+            if (timer.TotalMilliseconds >= milliseconds || timeUp)
+            {
                 return true;
             }
             else
@@ -46,7 +47,7 @@ namespace TPI_BattleBorn
         /// <param name="Milliseconds"></param>
         public void AddTime(int Milliseconds)
         {
-            timer+=TimeSpan.FromMilliseconds(Milliseconds);
+            timer += TimeSpan.FromMilliseconds(Milliseconds);
         }
 
         /// <summary>

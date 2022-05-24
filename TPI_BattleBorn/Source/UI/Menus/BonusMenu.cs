@@ -38,16 +38,18 @@ namespace TPI_BattleBorn
             if (bonusHealthButton.buttonClicked == true)
             {
                 bonusHealthButton.buttonClicked = false;
+
                 Globals.hpBonus++;
                 TPI_BattleBorn.Game.game.player.maxHealth += Globals.hpBonus;
+
                 Disable();
 
-                for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+                foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
                 {
-                    if (!(TPI_BattleBorn.Game.game.Components[i] is MenuComponent|| TPI_BattleBorn.Game.game.Components[i] is CursorComponent || TPI_BattleBorn.Game.game.Components[i] is ButtonComponent))
+                    if (!(component is MenuComponent || component is CursorComponent || component is ButtonComponent))
                     {
-                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Enabled = true;
-                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Visible = true;
+                        ((DrawableGameComponent)component).Enabled = true;
+                        ((DrawableGameComponent)component).Visible = true;
                     }
                 }
             }
@@ -55,15 +57,18 @@ namespace TPI_BattleBorn
             else if (bonusManaButton.buttonClicked == true)
             {
                 bonusManaButton.buttonClicked = false;
+
                 Globals.manaBonus++;
                 TPI_BattleBorn.Game.game.player.maxMana += Globals.manaBonus;
+
                 Disable();
-                for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+
+                foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
                 {
-                    if (!(TPI_BattleBorn.Game.game.Components[i] is MenuComponent || TPI_BattleBorn.Game.game.Components[i] is CursorComponent || TPI_BattleBorn.Game.game.Components[i] is ButtonComponent))
+                    if (!(component is MenuComponent || component is CursorComponent || component is ButtonComponent))
                     {
-                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Enabled = true;
-                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Visible = true;
+                        ((DrawableGameComponent)component).Enabled = true;
+                        ((DrawableGameComponent)component).Visible = true;
                     }
                 }
             }
@@ -71,15 +76,18 @@ namespace TPI_BattleBorn
             else if (bonusSpeedButton.buttonClicked == true)
             {
                 bonusSpeedButton.buttonClicked = false;
+
                 Globals.speedBonus++;
                 TPI_BattleBorn.Game.game.player.speed += Globals.speedBonus;
+
                 Disable();
-                for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+
+                foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
                 {
-                    if (!(TPI_BattleBorn.Game.game.Components[i] is MenuComponent || TPI_BattleBorn.Game.game.Components[i] is CursorComponent || TPI_BattleBorn.Game.game.Components[i] is ButtonComponent))
+                    if (!(component is MenuComponent || component is CursorComponent || component is ButtonComponent))
                     {
-                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Enabled = true;
-                        ((DrawableGameComponent)TPI_BattleBorn.Game.game.Components[i]).Visible = true;
+                        ((DrawableGameComponent)component).Enabled = true;
+                        ((DrawableGameComponent)component).Visible = true;
                     }
                 }
             }

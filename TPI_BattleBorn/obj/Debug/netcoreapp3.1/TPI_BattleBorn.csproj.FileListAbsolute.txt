@@ -92,3 +92,7 @@ C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Bon
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\GameOverMenu.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\MainMenu.xnb
 C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\VictoryMenu.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Background2.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Enemy2.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\Spawner2.xnb
+C:\Users\gaeta\Desktop\TPI_GE\TPI_BattleBorn\bin\Debug\netcoreapp3.1\Content\thunderbolt.xnb

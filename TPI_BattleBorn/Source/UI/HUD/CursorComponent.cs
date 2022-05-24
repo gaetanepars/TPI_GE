@@ -16,6 +16,7 @@ namespace TPI_BattleBorn
         public CursorComponent(Game game,string Path,Vector2 Position, Vector2 Dimensions) : base(game)
         {
             DrawOrder = 1000;
+
             position = Position;
             dimensions = Dimensions;
 

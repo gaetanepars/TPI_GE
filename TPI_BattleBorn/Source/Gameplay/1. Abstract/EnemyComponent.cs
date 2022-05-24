@@ -25,8 +25,8 @@ namespace TPI_BattleBorn
         public AnimationComponent deathAnimation;
         public EnemyComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
-            hitRange = 20f;
             DrawOrder = 2;
+            hitRange = 20f;
             position = Position;
             dimensions = Dimensions;
             dead = false;
@@ -57,6 +57,7 @@ namespace TPI_BattleBorn
                     TPI_BattleBorn.Game.game.player.score++;
                     TPI_BattleBorn.Game.game.player.experience += 10;
                 }
+
                 TPI_BattleBorn.Game.game.Components.Remove(this);
             }
             AI();
@@ -98,6 +99,7 @@ namespace TPI_BattleBorn
         public void GetHit(int damage)
         {
             health -= damage;
+
             if (health <= 0)
             {
                 dead = true;

@@ -5,12 +5,13 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class LaserSlash : ProjectileComponent
+    public class Thunderbolt : ProjectileComponent
     {
-        public LaserSlash(Game game, Vector2 Position, PlayerComponent Owner, Vector2 Target) : base(game, "LaserSlash", Position, new Vector2(60, 60), Owner, Target)
+        public Thunderbolt(Game game, Vector2 Position, PlayerComponent Owner, Vector2 Target) : base(game, "Thunderbolt", Position, new Vector2(60, 60), Owner, Target)
         {
-            projectileDamage = 5;
-            projectileTravelTime = new CooldownTimer(400);
+            projectileDamage = 10;
+            speed = 8;
+            projectileTravelTime = new CooldownTimer(1000);
         }
 
         public override void Draw(GameTime gameTime)

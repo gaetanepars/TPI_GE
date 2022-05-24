@@ -9,6 +9,9 @@ namespace TPI_BattleBorn
     {
         public Spawner2(Game game, Vector2 Position) : base(game, "Spawner2", Position, new Vector2(60, 60))
         {
+            health = 10;
+            spawnTimer = new CooldownTimer(1000);
+            spawnCounter = 5;
         }
 
         public override void Draw(GameTime gameTime)

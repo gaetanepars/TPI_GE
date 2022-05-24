@@ -27,6 +27,7 @@ namespace TPI_BattleBorn
         public ProjectileComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions, PlayerComponent Owner,  Vector2 Target) : base(game)
         {
             DrawOrder = 3;
+
             position = Position;
             dimensions = Dimensions;
             speed = 2;
@@ -83,13 +84,13 @@ namespace TPI_BattleBorn
         /// <returns></returns>
         public virtual bool collidingEnemies()
         {
-            for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+            foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
             {
-                if(TPI_BattleBorn.Game.game.Components[i] is EnemyComponent)
+                if (component is EnemyComponent)
                 {
-                    if (Globals.GetDistance(position, ((EnemyComponent)(TPI_BattleBorn.Game.game.Components[i])).position) < ((EnemyComponent)(TPI_BattleBorn.Game.game.Components[i])).hitRange)
+                    if (Globals.GetDistance(position, ((EnemyComponent)component).position) < ((EnemyComponent)component).hitRange)
                     {
-                        ((EnemyComponent)(TPI_BattleBorn.Game.game.Components[i])).GetHit(projectileDamage);
+                        ((EnemyComponent)component).GetHit(projectileDamage);
                         return true;
                     }
                 }
