@@ -18,11 +18,10 @@ namespace TPI_BattleBorn
         public Vector2 dimensions;
         public float rotation;
 
-        //basic texture placeholder while waiting for animations
         public Texture2D textureToDraw;
-        public AnimationComponent idleAnimation;
-        public AnimationComponent runningAnimation;
-        public AnimationComponent deathAnimation;
+
+        public CooldownTimer dmgTimer;
+
         public EnemyComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions) : base(game)
         {
             DrawOrder = 2;
@@ -31,6 +30,7 @@ namespace TPI_BattleBorn
             dimensions = Dimensions;
             dead = false;
             textureToDraw= Globals.content.Load<Texture2D>(Path);
+            dmgTimer = new CooldownTimer(500);
         }
 
         public override void Initialize()
@@ -49,6 +49,7 @@ namespace TPI_BattleBorn
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
+            dmgTimer.Update();
 
             if (dead == true)
             {
@@ -85,8 +86,13 @@ namespace TPI_BattleBorn
 
                 if (Globals.GetDistance(position, TPI_BattleBorn.Game.game.player.position) < 15)
                 {
-                    TPI_BattleBorn.Game.game.player.GetHit(attackDamage);
+                    if (dmgTimer.Test() == true)
+                    {
+                        TPI_BattleBorn.Game.game.player.GetHit(attackDamage);
+                    }
+                
                     dead = true;
+                    dmgTimer.ResetTime();
                 }
             }
            

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Enemy2.png</SourceFile>
-  <SourceTime>2022-05-24T14:14:25.1433981+02:00</SourceTime>
+  <SourceTime>2022-05-28T14:54:22.313551+02:00</SourceTime>
   <DestFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Enemy2.xnb</DestFile>
-  <DestTime>2022-05-24T14:14:55.3416322+02:00</DestTime>
+  <DestTime>2022-05-28T15:19:21.1252427+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

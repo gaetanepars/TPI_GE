@@ -17,16 +17,17 @@ namespace TPI_BattleBorn
         public Color currentColor;
         public Color maxColor;
 
-        public int border;
-
         public int currentNumber;
         public int maxNumber;
 
-        public GaugeComponent(Game game, int Border,Vector2 Position, Vector2 Dimensions, Color CurrentColor, Color MaxColor, int CurrentNumber, int MaxNumber) : base(game)
-        {
-            DrawOrder = 70;
+        public Rectangle currentRectangle;
+        public Rectangle maxRectangle;
 
-            border = Border;
+        string quantityString;
+
+        public GaugeComponent(Game game,Vector2 Position, Vector2 Dimensions, Color CurrentColor, Color MaxColor, int CurrentNumber, int MaxNumber) : base(game)
+        {
+            DrawOrder = 100;
 
             currentNumber = CurrentNumber;
             maxNumber = MaxNumber;
@@ -36,10 +37,15 @@ namespace TPI_BattleBorn
 
             position = Position;
             dimensions = Dimensions;
+            
+            maxQuantity = new Bar("MaxGauge", new Vector2(position.X, position.Y), new Vector2(dimensions.X, dimensions.Y), maxColor);
+            currentQuantity = new Bar("CurrentGauge", new Vector2(position.X, position.Y), new Vector2(currentNumber / maxNumber * (maxQuantity.dimensions.X), dimensions.Y), currentColor);
 
-            currentQuantity = new Bar("CurrentGauge", new Vector2(position.X, position.Y), new Vector2(Dimensions.X - border * 2, Dimensions.Y - border * 2),CurrentColor);
-            maxQuantity = new Bar("MaxGauge", new Vector2(position.X, position.Y), new Vector2(Dimensions.X, Dimensions.Y), CurrentColor);
+            currentRectangle = new Rectangle((int)position.X, (int)position.Y, (int)currentNumber, (int)dimensions.Y);
+            maxRectangle = new Rectangle((int)position.X,(int)position.Y, maxNumber*30, (int)dimensions.Y);
+
         }
+
 
         public override void Initialize()
         {
@@ -52,20 +58,26 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
-            currentQuantity.dimensions= new Vector2(currentNumber / maxNumber * (maxQuantity.dimensions.X - border * 2), currentQuantity.dimensions.Y);
+            quantityString = currentNumber + " / " + maxNumber;
+            currentRectangle.Width = (int)currentNumber*30;
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             Globals.spriteBatch.Begin();
-            maxQuantity.Draw();
-            currentQuantity.Draw();
+
+            maxQuantity.Draw(maxRectangle);
+            currentQuantity.Draw(currentRectangle);
+
+            Globals.spriteBatch.DrawString(Globals.font, quantityString, new Vector2(maxRectangle.Center.X-15, maxRectangle.Center.Y-10), Color.White);
+
             Globals.spriteBatch.End();
-            
+
             base.Draw(gameTime);
         }
     }
+
     public class Bar
     {
         public string path;
@@ -86,9 +98,10 @@ namespace TPI_BattleBorn
             barColor = BarColor;
         }
 
-        public void Draw()
+        public void Draw(Rectangle sourceRect)
         {
-            Globals.spriteBatch.Draw(textureToDraw, new Vector2(position.X, position.Y), barColor);
+            Globals.spriteBatch.Draw(textureToDraw, sourceRect, null, barColor);
         }
+
     }
 }

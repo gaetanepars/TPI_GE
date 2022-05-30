@@ -16,6 +16,12 @@
 #begin {0}.txt
 /copy:{0}.txt;0.txt
 
+#begin {1}.txt
+/copy:{1}.txt;1.txt
+
+#begin {2}.txt
+/copy:{2}.txt;2.txt
+
 #begin Background0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -52,6 +58,18 @@
 /processorParam:TextureFormat=Color
 /build:Background2.png
 
+#begin Bloc.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Bloc.png;Obstacle.png
+
 #begin BonusMenu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -76,6 +94,18 @@
 /processorParam:TextureFormat=Color
 /build:Button.png
 
+#begin ContinueButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:ContinueButton.png
+
 #begin CurrentBar.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -88,7 +118,7 @@
 /processorParam:TextureFormat=Color
 /build:CurrentBar.png;CurrentGauge.png
 
-#begin Cursor.png
+#begin cursor.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -98,7 +128,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Cursor.png
+/build:cursor.png
 
 #begin Enemy1.png
 /importer:TextureImporter
@@ -131,7 +161,7 @@
 /processorParam:TextureFormat=Compressed
 /build:File.spritefont;Font.spritefont
 
-#begin fireball.png
+#begin Fireball.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -141,7 +171,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:fireball.png
+/build:Fireball.png
 
 #begin GameOverMenu.png
 /importer:TextureImporter
@@ -179,7 +209,7 @@
 /processorParam:TextureFormat=Color
 /build:MaxBar.png;MaxGauge.png
 
-#begin Obstacle.png
+#begin PlayButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -189,7 +219,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Obstacle.png
+/build:PlayButton.png
 
 #begin Player.png
 /importer:TextureImporter
@@ -203,7 +233,7 @@
 /processorParam:TextureFormat=Color
 /build:Player.png
 
-#begin Spawner1.png
+#begin QuitButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -213,9 +243,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Spawner1.png
+/build:QuitButton.png
 
-#begin Spawner2.png
+#begin RestartButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -225,9 +255,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Spawner2.png
+/build:RestartButton.png
 
-#begin thunderbolt.png
+#begin spawner1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -237,7 +267,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:thunderbolt.png
+/build:spawner1.png
+
+#begin spawner2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:spawner2.png
+
+#begin Thunderbolt.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Thunderbolt.png
 
 #begin VictoryMenu.png
 /importer:TextureImporter

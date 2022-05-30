@@ -13,8 +13,10 @@ namespace TPI_BattleBorn
 
         public GameOverMenu(Game game) : base(game,"GameOverMenu",new Vector2(0,0), new Vector2(Globals.screenWidth,Globals.screenHeight))
         {
-            restartButton = new ButtonComponent(game, "Restart", new Vector2((Globals.screenWidth / 2) - 100, Globals.screenHeight / 2), new Vector2(200, 50));
-            quitButton = new ButtonComponent(game, "Quit", new Vector2((Globals.screenWidth / 2) - 100, (Globals.screenHeight / 2) + 100), new Vector2(200, 50));
+            restartButton = new ButtonComponent(game,"", new Vector2((Globals.screenWidth / 2) - 100, Globals.screenHeight / 2), new Vector2(200, 50));
+            restartButton.buttonTexture = Globals.content.Load<Texture2D>("RestartButton");
+            quitButton = new ButtonComponent(game, "", new Vector2((Globals.screenWidth / 2) - 100, (Globals.screenHeight / 2) + 100), new Vector2(200, 50));
+            quitButton.buttonTexture = Globals.content.Load<Texture2D>("QuitButton");
 
             TPI_BattleBorn.Game.game.Components.Add(restartButton);
             TPI_BattleBorn.Game.game.Components.Add(quitButton);

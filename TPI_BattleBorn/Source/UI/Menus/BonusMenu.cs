@@ -42,6 +42,9 @@ namespace TPI_BattleBorn
                 Globals.hpBonus++;
                 TPI_BattleBorn.Game.game.player.maxHealth += Globals.hpBonus;
 
+                TPI_BattleBorn.Game.game.player.health = TPI_BattleBorn.Game.game.player.maxHealth;
+                TPI_BattleBorn.Game.game.player.mana = TPI_BattleBorn.Game.game.player.maxMana;
+
                 Disable();
 
                 foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
@@ -61,6 +64,9 @@ namespace TPI_BattleBorn
                 Globals.manaBonus++;
                 TPI_BattleBorn.Game.game.player.maxMana += Globals.manaBonus;
 
+                TPI_BattleBorn.Game.game.player.health = TPI_BattleBorn.Game.game.player.maxHealth;
+                TPI_BattleBorn.Game.game.player.mana = TPI_BattleBorn.Game.game.player.maxMana;
+
                 Disable();
 
                 foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
@@ -79,6 +85,9 @@ namespace TPI_BattleBorn
 
                 Globals.speedBonus++;
                 TPI_BattleBorn.Game.game.player.speed += Globals.speedBonus;
+
+                TPI_BattleBorn.Game.game.player.health = TPI_BattleBorn.Game.game.player.maxHealth;
+                TPI_BattleBorn.Game.game.player.mana = TPI_BattleBorn.Game.game.player.maxMana;
 
                 Disable();
 

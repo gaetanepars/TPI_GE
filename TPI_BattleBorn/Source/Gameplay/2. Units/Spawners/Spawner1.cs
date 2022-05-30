@@ -10,8 +10,8 @@ namespace TPI_BattleBorn
         public Spawner1(Game game, Vector2 Position) : base(game, "Spawner1", Position, new Vector2(60, 60))
         {
             health = 5;
-            spawnTimer = new CooldownTimer(3000);
-            spawnCounter = 100;
+            spawnTimer = new CooldownTimer(2000);
+            spawnCounter = 0;
         }
 
         public override void Initialize()
@@ -38,7 +38,7 @@ namespace TPI_BattleBorn
         /// </summary>
         public override void SpawnEnemies()
         {
-            if (spawnTimer.Test() == true && spawnCounter != 3)
+            if (spawnTimer.Test() == true && spawnCounter != 100)
             {
                 TPI_BattleBorn.Game.game.Components.Add(new Enemy1(TPI_BattleBorn.Game.game, new Vector2(position.X, position.Y)));
                 spawnCounter++;

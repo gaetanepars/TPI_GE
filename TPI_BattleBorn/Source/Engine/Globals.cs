@@ -8,7 +8,10 @@ using System.Text;
 
 namespace TPI_BattleBorn
 {
-    public class Globals
+    /// <summary>
+    /// Class that contains everything global
+    /// </summary>
+    public static class Globals
     {
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
@@ -18,8 +21,6 @@ namespace TPI_BattleBorn
 
         public static MouseState mouse;
         public static KeyboardState keyboard;
-
-        public static int gameState = 0;
 
         public static int screenWidth;
         public static int screenHeight;
@@ -33,6 +34,11 @@ namespace TPI_BattleBorn
         public static float GetDistance(Vector2 position, Vector2 target)
         {
             return (float)Math.Sqrt(Math.Pow(position.X - target.X, 2) + Math.Pow(position.Y - target.Y, 2));
+        }
+
+        public static Vector2 GetBottomCenter(this Rectangle rect)
+        {
+            return new Vector2(rect.X + rect.Width / 2.0f, rect.Bottom);
         }
 
         public static Vector2 RadialMovement(Vector2 focus, Vector2 position, float speed)

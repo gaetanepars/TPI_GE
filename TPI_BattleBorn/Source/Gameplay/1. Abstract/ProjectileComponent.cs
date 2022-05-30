@@ -104,13 +104,13 @@ namespace TPI_BattleBorn
         /// <returns></returns>
         public virtual bool collidingSpawners()
         {
-            for (int i = 0; i < TPI_BattleBorn.Game.game.Components.Count; i++)
+            foreach (GameComponent component in TPI_BattleBorn.Game.game.Components)
             {
-                if (TPI_BattleBorn.Game.game.Components[i] is SpawnerComponent)
+                if (component is SpawnerComponent)
                 {
-                    if (Globals.GetDistance(position, ((SpawnerComponent)(TPI_BattleBorn.Game.game.Components[i])).position) < ((SpawnerComponent)(TPI_BattleBorn.Game.game.Components[i])).hitRange)
+                    if (Globals.GetDistance(position, ((SpawnerComponent)component).position) < ((SpawnerComponent)component).hitRange)
                     {
-                        ((SpawnerComponent)(TPI_BattleBorn.Game.game.Components[i])).GetHit(projectileDamage);
+                        ((SpawnerComponent)component).GetHit(projectileDamage);
                         return true;
                     }
                 }

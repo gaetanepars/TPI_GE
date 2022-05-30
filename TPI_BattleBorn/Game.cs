@@ -37,7 +37,7 @@ namespace TPI_BattleBorn
         {
             Globals.content = this.Content;
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
-            Globals.screenWidth = 1280;
+            Globals.screenWidth = 1260;
             Globals.screenHeight = 720;
 
             game = this;
@@ -49,7 +49,18 @@ namespace TPI_BattleBorn
             IsMouseVisible = false;
 
             LoadNext();
-            
+
+            foreach (GameComponent component in Components)
+            {
+                if (!(component is MainMenu || component is CursorComponent))
+                {
+                    ((DrawableGameComponent)component).Enabled = false;
+                    ((DrawableGameComponent)component).Visible = false;
+                }
+            }
+            mainMenu.Enable();
+            mainMenu.continueButton.Visible = false;
+
             base.Initialize();
         }
 
@@ -104,17 +115,19 @@ namespace TPI_BattleBorn
                     }
                 }
                 player.experience = 0;
+                
                 bonusMenu.Enable();
+          
                 player.playerLevel++;
             }
 
-            if (player != null && player.score==100 && Globals.levelIndex<2)
+            if (player != null && player.score==15 && Globals.levelIndex<2)
             {
-                player.ResetPlayer();
+                Components.Clear();
                 LoadNext();
             }
 
-            else if (player!=null && player.score==100 && Globals.levelIndex==2)
+            else if (player!=null && player.score==15 && Globals.levelIndex==2)
             {
                 LoadVictory();
             }

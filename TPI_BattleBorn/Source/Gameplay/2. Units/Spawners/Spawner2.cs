@@ -7,11 +7,13 @@ namespace TPI_BattleBorn
 {
     public class Spawner2 : SpawnerComponent
     {
+        public CooldownTimer wavetimer;
         public Spawner2(Game game, Vector2 Position) : base(game, "Spawner2", Position, new Vector2(60, 60))
         {
             health = 10;
-            spawnTimer = new CooldownTimer(1000);
-            spawnCounter = 5;
+            spawnTimer = new CooldownTimer(500);
+            spawnCounter = 0;
+            wavetimer = new CooldownTimer(10000);
         }
 
         public override void Draw(GameTime gameTime)
@@ -26,6 +28,13 @@ namespace TPI_BattleBorn
 
         public override void Update(GameTime gameTime)
         {
+            wavetimer.Update();
+            if (wavetimer.Test() == true)
+            {
+                spawnCounter = 0;
+                wavetimer.ResetTime();
+            }
+
             base.Update(gameTime);
         }
 
@@ -45,6 +54,7 @@ namespace TPI_BattleBorn
                 spawnCounter++;
                 spawnTimer.ResetTime();
             }
+
             base.SpawnEnemies();
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Spawner1.png</SourceFile>
-  <SourceTime>2022-05-15T16:17:47.7747062+02:00</SourceTime>
-  <DestFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Spawner1.xnb</DestFile>
-  <DestTime>2022-05-24T14:12:01.9202965+02:00</DestTime>
+  <SourceFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/spawner1.png</SourceFile>
+  <SourceTime>2022-05-28T14:06:39.7853231+02:00</SourceTime>
+  <DestFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/spawner1.xnb</DestFile>
+  <DestTime>2022-05-28T15:37:32.6130807+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

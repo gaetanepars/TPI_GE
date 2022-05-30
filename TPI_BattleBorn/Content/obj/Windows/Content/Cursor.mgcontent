@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/Cursor.png</SourceFile>
-  <SourceTime>2022-05-18T11:26:41.1820614+02:00</SourceTime>
-  <DestFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/Cursor.xnb</DestFile>
-  <DestTime>2022-05-18T11:27:32.5708615+02:00</DestTime>
+  <SourceFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/cursor.png</SourceFile>
+  <SourceTime>2022-05-28T15:31:18.3918577+02:00</SourceTime>
+  <DestFile>C:/Users/gaeta/Desktop/TPI_GE/TPI_BattleBorn/Content/bin/Windows/Content/cursor.xnb</DestFile>
+  <DestTime>2022-05-28T15:31:52.9945402+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T18:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

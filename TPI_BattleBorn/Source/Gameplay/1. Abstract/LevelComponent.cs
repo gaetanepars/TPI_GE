@@ -18,6 +18,8 @@ namespace TPI_BattleBorn
 
         public HUDComponent hud;
 
+        public List<Rectangle> solidTiles = new List<Rectangle>();
+
         public int Width
         {
             get { return tiles.GetLength(0); }
@@ -82,7 +84,7 @@ namespace TPI_BattleBorn
                 case '"':
                     return SpawnerTile(x, y, "Spawner2");
                 case '#':
-                    return LoadTile("Obstacle", TileStatus.Solid);
+                    return LoadTile(x,y,"Obstacle", TileStatus.Solid);
                 default:
                     throw new NotSupportedException(String.Format("Error handling tiles"));
             }
@@ -94,8 +96,11 @@ namespace TPI_BattleBorn
         /// <param name="name"></param>
         /// <param name="status"></param>
         /// <returns></returns>
-        private Tile LoadTile(string name, TileStatus status)
+        private Tile LoadTile(int x, int y, string name, TileStatus status)
         {
+            Rectangle tileRect = GetTileRectangle(x, y);
+            solidTiles.Add(tileRect);
+
             return new Tile(Globals.content.Load<Texture2D>(name), status);
         }
 
@@ -107,7 +112,7 @@ namespace TPI_BattleBorn
         /// <returns></returns>
         private Tile StartTile(int x, int y)
         {
-            startingPoint = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+            startingPoint = Globals.GetBottomCenter(GetTileRectangle(x, y));
 
             TPI_BattleBorn.Game.game.player = new PlayerComponent(TPI_BattleBorn.Game.game, "Player", new Vector2(startingPoint.X,startingPoint.Y), new Vector2(50, 50));
             TPI_BattleBorn.Game.game.Components.Add(TPI_BattleBorn.Game.game.player);
@@ -124,7 +129,7 @@ namespace TPI_BattleBorn
         /// <returns></returns>
         private Tile EnemyTile(int x, int y, string spriteSet)
         {
-            Vector2 enemyPosition = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+            Vector2 enemyPosition = Globals.GetBottomCenter(GetTileRectangle(x, y));
 
             if (spriteSet == "Enemy1")
             {
@@ -146,7 +151,7 @@ namespace TPI_BattleBorn
         /// <returns></returns>
         private Tile SpawnerTile(int x, int y, string spriteSet)
         {
-            Vector2 spawnerPosition = RectangleExtension.GetBottomCenter(GetTileRectangle(x, y));
+            Vector2 spawnerPosition = Globals.GetBottomCenter(GetTileRectangle(x, y));
 
             if (spriteSet == "Spawner1")
             {

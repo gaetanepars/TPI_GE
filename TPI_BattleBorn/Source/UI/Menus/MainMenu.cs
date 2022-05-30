@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +14,14 @@ namespace TPI_BattleBorn
 
         public MainMenu(Game game) : base(game,"MainMenu",new Vector2(0,0),new Vector2(Globals.screenWidth,Globals.screenHeight))
         {
-            continueButton = new ButtonComponent(game, "Continue", new Vector2((Globals.screenWidth / 2)-100, Globals.screenHeight / 2), new Vector2(200, 50));
-            restartButton = new ButtonComponent(game, "Restart", new Vector2((Globals.screenWidth / 2)-100, (Globals.screenHeight / 2) + 100), new Vector2(200, 50));
-            quitButton = new ButtonComponent(game, "Quit", new Vector2((Globals.screenWidth / 2)-100, (Globals.screenHeight / 2) + 200), new Vector2(200, 50));
+            continueButton = new ButtonComponent(game, "", new Vector2((Globals.screenWidth / 2)-100, Globals.screenHeight / 2-100), new Vector2(200, 50));
+            continueButton.buttonTexture = Globals.content.Load<Texture2D>("ContinueButton");
+
+            restartButton = new ButtonComponent(game, "", new Vector2((Globals.screenWidth / 2)-100, (Globals.screenHeight / 2)), new Vector2(200, 50));
+            restartButton.buttonTexture = Globals.content.Load<Texture2D>("RestartButton");
+
+            quitButton = new ButtonComponent(game, "", new Vector2((Globals.screenWidth / 2)-100, (Globals.screenHeight / 2) + 100), new Vector2(200, 50));
+            quitButton.buttonTexture = Globals.content.Load<Texture2D>("quitButton");
 
             TPI_BattleBorn.Game.game.Components.Add(continueButton);
             TPI_BattleBorn.Game.game.Components.Add(restartButton);

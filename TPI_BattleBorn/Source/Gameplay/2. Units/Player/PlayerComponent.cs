@@ -21,6 +21,9 @@ namespace TPI_BattleBorn
         public int mana;
         public int speed;
 
+        public float velocityX;
+        public float velocityY;
+
         public float hitRange;
 
         public int potions;
@@ -33,16 +36,12 @@ namespace TPI_BattleBorn
 
         //basic texture placeholder while waiting for animations
         public Texture2D textureToDraw;
-        public AnimationComponent idleAnimation;
-        public AnimationComponent runningAnimation;
-        public AnimationComponent deathAnimation;
-
-        public AnimationManager sprite;
 
         public Rectangle localBounds;
 
-        CooldownTimer attackTimer = new CooldownTimer(1000);
+        CooldownTimer attackTimer = new CooldownTimer(400);
         CooldownTimer spellTimer = new CooldownTimer(800);
+        CooldownTimer potionTimer = new CooldownTimer(800);
 
         public PlayerComponent(Game game, string Path, Vector2 Position, Vector2 Dimensions):base(game)
         {
@@ -71,15 +70,6 @@ namespace TPI_BattleBorn
         /// <summary>
         /// Player hitbox
         /// </summary>
-        public Rectangle BoundingRectangle
-        {
-            get
-            {
-                int left = (int)Math.Round(position.X) + localBounds.X;
-                int top = (int)Math.Round(position.Y) + localBounds.Y;
-                return new Rectangle(left, top, localBounds.Width, localBounds.Height);
-            }
-        }
 
         public void ResetPlayer()
         {
@@ -109,26 +99,44 @@ namespace TPI_BattleBorn
         }
 
         /// <summary>
-        /// Handles movement inputs, attack inputs and calls CollisionManagement()
+        /// Handles movement inputs, attack inputs and collision with solid blocks
         /// </summary>
         /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
+            var oldX = position.X;
+            var oldY = position.Y;
+
+            position.X += velocityX;
+            position.Y += velocityY;
+
+            localBounds = new Rectangle((int)position.X, (int)position.Y, (int)dimensions.X, (int)dimensions.Y);
+
             if (Globals.keyboard.IsKeyDown(Keys.W))
             {
-                position = new Vector2(position.X, position.Y - speed);
+                velocityY = -speed;
             }
             if (Globals.keyboard.IsKeyDown(Keys.S))
             {
-                position = new Vector2(position.X, position.Y + speed);
+                velocityY = speed;
             }
             if (Globals.keyboard.IsKeyDown(Keys.A))
             {
-                position = new Vector2(position.X - speed, position.Y);
+                velocityX = -speed;
             }
             if (Globals.keyboard.IsKeyDown(Keys.D))
             {
-                position = new Vector2(position.X + speed, position.Y);
+                velocityX = speed;
+            }
+
+            if (Globals.keyboard.IsKeyUp(Keys.W) && Globals.keyboard.IsKeyUp(Keys.S))
+            {
+                velocityY = 0;
+            }
+
+            if (Globals.keyboard.IsKeyUp(Keys.A) && Globals.keyboard.IsKeyUp(Keys.D))
+            {
+                velocityX = 0;
             }
 
             if (Globals.mouse.LeftButton == ButtonState.Pressed)
@@ -152,11 +160,14 @@ namespace TPI_BattleBorn
 
             if (Globals.keyboard.IsKeyDown(Keys.Q))
             {
-                if (potions != 0)
+                if (potionTimer.Test()==true && potions!=0)
                 {
                     health = maxHealth;
+                    mana = maxMana;
+
+                    potions--;
+                    potionTimer.ResetTime();
                 }
-                
             }
 
             if (dead == true)
@@ -164,16 +175,29 @@ namespace TPI_BattleBorn
 
                 TPI_BattleBorn.Game.game.Components.Remove(this);
                 TPI_BattleBorn.Game.game.player = null;
-
             }
 
-            CollisionManagement();
+            foreach (Rectangle hitbox in TPI_BattleBorn.Game.game.level.solidTiles)
+            {
+                bool x_overlaps = (localBounds.Left < hitbox.Right) && (localBounds.Right > hitbox.Left);
+                bool y_overlaps = (localBounds.Top < hitbox.Bottom) && (localBounds.Bottom > hitbox.Top);
+
+                bool colliding = x_overlaps && y_overlaps;
+
+                if (colliding)
+                {
+                    position.X = oldX;
+                    position.Y = oldY;
+                }
+            }
 
             rotation = Globals.RotateTo(position, new Vector2(Globals.mouse.Position.X, Globals.mouse.Position.Y));
 
             attackTimer.Update();
 
             spellTimer.Update();
+
+            potionTimer.Update();
 
             base.Update(gameTime);
         }
@@ -187,6 +211,7 @@ namespace TPI_BattleBorn
             base.Draw(gameTime);
         }
 
+
         public void GetHit(int damage)
         {
             health -= damage;
@@ -194,48 +219,6 @@ namespace TPI_BattleBorn
             if (health <= 0)
             {
                 dead = true;
-            }
-        }
-
-        /// <summary>
-        /// Handles the collision between the player and the tiles
-        /// </summary>
-        private void CollisionManagement()
-        {
-            Rectangle bounds = BoundingRectangle;
-            int leftTile = (int)Math.Floor((float)bounds.Left/ Tile.tileWidth);
-            int rightTile = (int)Math.Ceiling(((float)bounds.Right / Tile.tileWidth)) - 1;
-            int topTile = (int)Math.Floor((float)bounds.Top / Tile.tileHeight);
-            int bottomTile = (int)Math.Ceiling(((float)bounds.Bottom / Tile.tileHeight)) - 1;
-
-            for (int y = topTile; y <= bottomTile; y++)
-            {
-                for (int x = leftTile; x <= rightTile; x++)
-                {
-                    TileStatus collision = TPI_BattleBorn.Game.game.level.GetCollision(x, y);
-                    if (collision != TileStatus.Passthrough)
-                    {
-                        Rectangle tileBounds = TPI_BattleBorn.Game.game.level.GetTileRectangle(x, y);
-                        Vector2 depth = RectangleExtension.GetIntersectionDepth(bounds, tileBounds);
-                        if (depth != Vector2.Zero)
-                        {
-                            float absDepthX = Math.Abs(depth.X);
-                            float absDepthY = Math.Abs(depth.Y);
-
-                            if (absDepthY < absDepthX && collision == TileStatus.Solid)
-                            {
-
-                                position = new Vector2(position.X, position.Y - Tile.tileHeight );
-                                bounds = BoundingRectangle;
-                            }
-                            else if (absDepthY>absDepthX && collision == TileStatus.Solid)
-                            {
-                                position = new Vector2(position.X +Tile.tileWidth, position.Y);
-                                bounds = BoundingRectangle;
-                            }
-                        }
-                    }
-                }
             }
         }
     }
